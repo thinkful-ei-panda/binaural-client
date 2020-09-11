@@ -7,6 +7,7 @@ import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute"
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import DashboardRoute from "../../routes/DashboardRoute/DashboardRoute";
 import GeneratorRoute from "../../routes/GeneratorRoute/GeneratorRoute";
+import ChangePasswordRoute from "../../routes/ChangePasswordRoute/ChangePasswordRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import "./App.css";
 
@@ -34,6 +35,7 @@ export default class App extends Component {
               path={"/"}
               component={user.admin === true ? DashboardRoute : GeneratorRoute}
             />
+            <PublicOnlyRoute path={"/change"} component={ChangePasswordRoute} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
             <Route component={NotFoundRoute} />

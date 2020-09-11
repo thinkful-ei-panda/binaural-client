@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
+import GeneratorApiService from "../../services/generator-api-service";
 import Button from "../Button/Button";
 import "../App/App.css";
 
@@ -17,7 +17,7 @@ class RegistrationForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, email, password } = ev.target;
-    AuthApiService.postUser({
+    GeneratorApiService.postUser({
       name: name.value,
       email: email.value,
       password: password.value,

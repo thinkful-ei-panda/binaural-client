@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "../../components/Header/Header";
 import UserContext from "../../contexts/UserContext";
 import "../App/App.css";
 
