@@ -13,7 +13,7 @@ class SoundSelectForm extends Component {
   { 
     error: null,
     beat: 4,
-    fundamental: 80,
+    fundamental: 100,
     soundPlaying:false,
   };
   
@@ -69,15 +69,14 @@ class SoundSelectForm extends Component {
           ? <Visualiser beat = {this.state.beat}/> 
           :<form onSubmit={(e) => this.handlePlayTone(e)}>
             <div role="alert">{error && <p>{error}</p>}</div>
-            <select>
+            <select onChange={(e) => this.handleWaveChange(e)}>
               <option value = 'Delta'>Delta</option>
               <option value = 'Theta'>Theta</option>
               <option value = 'Alpha'>Alpha</option>
             </select>
             <select>
-              <option value = 'Cube'>Cube</option>
-              <option value = 'Sphere'>Sphere</option>
-              <option value = 'Polehedral'>Polehedral</option>
+              <option value = 'Cube'>Cube</option>              
+              <option value = 'Polyhedron'>Polyhedron</option>
             </select>
             <button>Play</button>
           </form>
