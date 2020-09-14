@@ -6,16 +6,21 @@ import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
 import DashboardRoute from "../../routes/DashboardRoute/DashboardRoute";
-import GeneratorRoute from "../../routes/GeneratorRoute/GeneratorRoute";
+import PlayerRoute from "../../routes/PlayerRoute/PlayerRoute";
+import LearnRoute from "../../routes/LearnRoute/LearnRoute";
 import ChangePasswordRoute from "../../routes/ChangePasswordRoute/ChangePasswordRoute";
+import WelcomeRoute from "../../routes/WelcomeRoute/WelcomeRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
+import UserContext from "../../contexts/UserContext";
+import "../../index.css";
 import "./App.css";
 
 export default class App extends Component {
   state = {
     hasError: false,
-    user: {},
   };
+
+  static contextType = UserContext;
 
   static getDerivedStateFromError(error) {
     console.error(error);
@@ -23,21 +28,25 @@ export default class App extends Component {
   }
 
   render() {
-    const { hasError, user } = this.state;
+    const { hasError } = this.state;
     return (
       <div className="App">
         <Header />
         <main>
           {hasError && <p>There was an error! Oh no!</p>}
+
           <Switch>
-            <PrivateRoute
-              exact
-              path={"/"}
-              component={user.admin === true ? DashboardRoute : GeneratorRoute}
-            />
-            <PublicOnlyRoute path={"/change"} component={ChangePasswordRoute} />
+            <PublicOnlyRoute exact path={"/"} component={WelcomeRoute} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
+            {/* //TODO pull user.admin
+            {!user.admin ? ( */}
+            <Route path={"/learn"} component={LearnRoute} />
+            {/* ) : (  */}
+            <PrivateRoute path={"/dashboard"} component={DashboardRoute} />
+            {/* )}  */}
+            <PublicOnlyRoute path={"/player"} component={PlayerRoute} />
+            <PrivateRoute path={"/change"} component={ChangePasswordRoute} />
             <Route component={NotFoundRoute} />
           </Switch>
         </main>

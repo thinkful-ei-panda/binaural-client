@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Input, Label } from "../Form/Form";
-import GenerateApiService from "../../services/generator-api-service";
+import UserApiService from "../../services/user-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
 import "../App/App.css";
@@ -22,13 +22,15 @@ class ChangePasswordForm extends Component {
 
     this.setState({ error: null });
 
-    GenerateApiService.updateUser({
+    UserApiService.updateUser({
       password: password.value,
     })
       .then((res) => {
         password.value = "";
-        this.context.processLogin(res.authToken); //change processLogin
-        this.props.onLoginSuccess(); //change onLoginSuccess
+        //TODO change processLogin
+        this.context.processLogin(res.authToken);
+        //TODO change onLoginSuccess
+        this.props.onLoginSuccess();
       })
       .catch((res) => {
         this.setState({ error: res.error });

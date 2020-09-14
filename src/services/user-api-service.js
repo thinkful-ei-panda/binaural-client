@@ -1,7 +1,7 @@
 import config from '../config';
 import TokenService from '../services/token-service';
 
-const GeneratorApiService = {
+const UserApiService = {
 	getUsers() {
 		return fetch(`${config.API_ENDPOINT}/admin`, {
 			headers: {},
@@ -43,4 +43,4 @@ const GeneratorApiService = {
 	},
 };
 
-export default GeneratorApiService;
+export default UserApiService;

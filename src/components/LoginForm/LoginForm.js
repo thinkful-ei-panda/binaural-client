@@ -71,7 +71,9 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <Button type="submit">Log In</Button>
+        <Link to="/player">
+          <Button type="submit">Log In</Button>
+        </Link>
         <Link to="/register">
           <Button type="button">Sign Up</Button>
         </Link>
