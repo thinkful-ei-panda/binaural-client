@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
-import Generator from "../../components/Generator/Generator";
+import SoundSelectForm from "../../components/SoundSelectForm/SoundSelectForm";
 
-class GeneratorRoute extends Component {
+class PlayerRoute extends Component {
   static defaultProps = {
     location: {},
     history: {
@@ -21,7 +21,7 @@ class GeneratorRoute extends Component {
     // const { user } = this.state;
     return (
       <div>
-        <span>"Logged in as" {/* {this.user.name} */}</span>
+        <span>Logged in as {/* {this.user.name} */}</span>
         <nav>
           <Link onClick={this.handleLogoutClick} to="/login">
             Logout
@@ -37,10 +37,10 @@ class GeneratorRoute extends Component {
         <p>Best Experienced Through Headphones</p>
         {this.renderLogoutLink()}
         <h2>Change Password</h2>
-        {/* <Generator /> */}
+        <SoundSelectForm />
       </section>
     );
   }
 }
 
-export default GeneratorRoute;
+export default PlayerRoute;

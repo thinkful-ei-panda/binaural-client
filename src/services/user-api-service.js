@@ -1,16 +1,16 @@
 import config from "../config";
-import TokenService from "../services/token-service";
+import TokenService from "./token-service";
 
-const GeneratorApiService = {
+const UserApiService = {
   getUsers() {
-    return fetch(`${config.API_ENDPOINT}/api/users`, {
+    return fetch(`${config.API_ENDPOINT}/admin`, {
       headers: {},
     }).then((res) =>
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
   getUser() {
-    return fetch(`${config.API_ENDPOINT}/api/users/user`, {
+    return fetch(`${config.API_ENDPOINT}/admin/:id`, {
       headers: {
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
@@ -19,7 +19,7 @@ const GeneratorApiService = {
     );
   },
   postUser(user) {
-    return fetch(`${config.API_ENDPOINT}/api/user`, {
+    return fetch(`${config.API_ENDPOINT}/api/register`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,6 +41,7 @@ const GeneratorApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+  //deleteUser() {},
 };
 
-export default GeneratorApiService;
+export default UserApiService;

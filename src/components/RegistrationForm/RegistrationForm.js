@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
-import GeneratorApiService from "../../services/generator-api-service";
+import UserApiService from "../../services/user-api-service";
 import Button from "../Button/Button";
+import UserContext from "../../contexts/UserContext";
 import "../App/App.css";
 
 class RegistrationForm extends Component {
+  static contextType = UserContext;
   static defaultProps = {
     onRegistrationSuccess: () => {},
   };
@@ -17,7 +19,7 @@ class RegistrationForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault();
     const { name, email, password } = ev.target;
-    GeneratorApiService.postUser({
+    UserApiService.postUser({
       name: name.value,
       email: email.value,
       password: password.value,

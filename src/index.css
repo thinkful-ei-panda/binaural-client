@@ -8,11 +8,14 @@ body {
   width: 100%;
   min-height: 100%;
 }
+html {
+  position: relative;
+}
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  position: relative;
+  position: absolute;
   background-color: black;
   color: white;
   text-align: center;
