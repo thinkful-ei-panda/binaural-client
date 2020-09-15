@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
-import SoundSelectForm from "../../components/SoundSelectForm/SoundSelectForm";
+import Player from "../../components/Player/Player";
 
 class PlayerRoute extends Component {
   static defaultProps = {
@@ -36,8 +36,9 @@ class PlayerRoute extends Component {
       <section>
         <p>Best Experienced Through Headphones</p>
         {this.renderLogoutLink()}
-        <h2>Change Password</h2>
-        <SoundSelectForm />
+        <h2>Change Password</h2>        
+        <Player />
+        
       </section>
     );
   }
