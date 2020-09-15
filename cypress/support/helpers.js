@@ -2,12 +2,12 @@ import jwt from 'jsonwebtoken';
 
 export function makeLoginToken() {
   const loginUser = {
-    user_id: 123,
-    name: 'Test name of user',
+    username: 'test',
+    password: 'Test1112!'
   }
-  return jwt.sign(loginUser, 'test-secret', {
-    subject: 'test-username',
-    expiresIn: '2m',
+  return jwt.sign(loginUser, 'capstone3-secret', {
+    subject: 'test',
+    expiresIn: '10m',
     algorithm: 'HS256',
   })
 }
