@@ -42,26 +42,27 @@ export default class App extends Component {
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
 
             {/* <Route
-              exact
-              path="/learn"
-              component={
-                TokenService.hasAuthToken() && this.context.user.admin === true
-                  ? Admin
-                  : LearnRoute
-              }
+              path="/admin"
+              component={this.context.user.admin === true ? Admin : LearnRoute}
             /> */}
 
             {/* <Route
-              exact
-              path="/learn"
-              {...(TokenService.hasAuthToken() && this.context.user.admin === true
-                ? (component = { Admin })
-                : (component = { LearnRoute }))}
+              path="/hello"
+              render={() => {
+                this.context.user.admin ?
+                  
+                return (
+                  <div className="jumbotron">
+                    {" "}
+                    <h1 className="display-3">Hello, world!</h1>{" "}
+                  </div>
+                );
+              }}
             /> */}
 
             <Route path={"/admin"} component={Admin} />
 
-            {/* <Route path={"/learn"} component={LearnRoute} /> */}
+            <Route path={"/learn"} component={LearnRoute} />
 
             <Route path={"/player"} component={PlayerRoute} />
             <PrivateRoute path={"/change"} component={ChangePasswordRoute} />

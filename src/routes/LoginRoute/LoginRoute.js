@@ -12,13 +12,25 @@ class LoginRoute extends Component {
 
   static contextType = UserContext;
 
-  handleLoginSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/learn";
-    history.push(destination);
+  // handleLoginSuccess = () => {
+  //     const { history } = this.props;
+  //     {
+  //       user.admin ? history.push("/admin") : history.push("/learn");
+  //     }
+  //   };
+
+  handleAdminLogin = () => {
+    const { history } = this.props;
+    history.push("/admin");
+  };
+  handleUserLogin = () => {
+    const { history } = this.props;
+    history.push("/learn");
   };
 
   render() {
+    const { user } = this.context;
+
     return (
       <section>
         <p>
@@ -26,7 +38,12 @@ class LoginRoute extends Component {
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <h2>Login</h2>
-        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
+        <LoginForm
+          onLoginSuccess={
+            user.admin ? this.handleAdminLogin : this.handleUserLogin
+          }
+        />
+        {/* <LoginForm onLoginSuccess={handleLoginSuccess} /> */}
       </section>
     );
   }

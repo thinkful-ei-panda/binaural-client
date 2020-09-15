@@ -68,6 +68,7 @@ export class UserProvider extends Component {
       id: jwtPayload.user_id,
       name: jwtPayload.name,
       email: jwtPayload.sub,
+      admin: jwtPayload.false,
     });
     IdleService.registerIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
