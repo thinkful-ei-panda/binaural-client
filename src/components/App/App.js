@@ -5,12 +5,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
-import DashboardRoute from "../../routes/DashboardRoute/DashboardRoute";
+import Admin from "../../components/Admin/Admin";
 import PlayerRoute from "../../routes/PlayerRoute/PlayerRoute";
 import LearnRoute from "../../routes/LearnRoute/LearnRoute";
 import ChangePasswordRoute from "../../routes/ChangePasswordRoute/ChangePasswordRoute";
 import WelcomeRoute from "../../routes/WelcomeRoute/WelcomeRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
+import TokenService from "../../services/token-service";
 import UserContext from "../../contexts/UserContext";
 import "../../index.css";
 import "./App.css";
@@ -36,16 +37,33 @@ export default class App extends Component {
           {hasError && <p>There was an error! Oh no!</p>}
 
           <Switch>
-            <PublicOnlyRoute exact path={"/"} component={WelcomeRoute} />
+            <Route exact path={"/"} component={WelcomeRoute} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
-            {/* //TODO pull user.admin
-            {!user.admin ? ( */}
-            <Route path={"/learn"} component={LearnRoute} />
-            {/* ) : (  */}
-            <PrivateRoute path={"/dashboard"} component={DashboardRoute} />
-            {/* )}  */}
-            <PublicOnlyRoute path={"/player"} component={PlayerRoute} />
+
+            {/* <Route
+              exact
+              path="/learn"
+              component={
+                TokenService.hasAuthToken() && this.context.user.admin === true
+                  ? Admin
+                  : LearnRoute
+              }
+            /> */}
+
+            {/* <Route
+              exact
+              path="/learn"
+              {...(TokenService.hasAuthToken() && this.context.user.admin === true
+                ? (component = { Admin })
+                : (component = { LearnRoute }))}
+            /> */}
+
+            <Route path={"/admin"} component={Admin} />
+
+            {/* <Route path={"/learn"} component={LearnRoute} /> */}
+
+            <Route path={"/player"} component={PlayerRoute} />
             <PrivateRoute path={"/change"} component={ChangePasswordRoute} />
             <Route component={NotFoundRoute} />
           </Switch>

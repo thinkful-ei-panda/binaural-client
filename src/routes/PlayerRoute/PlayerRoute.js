@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
-import SoundSelectForm from "../../components/SoundSelectForm/SoundSelectForm";
+import Player from "../../components/Player/Player";
 
 class PlayerRoute extends Component {
   static defaultProps = {
@@ -18,10 +18,10 @@ class PlayerRoute extends Component {
   };
 
   renderLogoutLink() {
-    // const { user } = this.state;
+    const { user } = this.context;
     return (
       <div>
-        <span>Logged in as {/* {this.user.name} */}</span>
+        <span>Logged in as {user.name}</span>
         <nav>
           <Link onClick={this.handleLogoutClick} to="/login">
             Logout
@@ -37,7 +37,7 @@ class PlayerRoute extends Component {
         <p>Best Experienced Through Headphones</p>
         {this.renderLogoutLink()}
         <h2>Change Password</h2>
-        <SoundSelectForm />
+        <Player />
       </section>
     );
   }
