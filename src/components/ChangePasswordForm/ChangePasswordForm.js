@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Input, Label } from "../Form/Form";
-import AuthApiService from "../../services/auth-api-service";
+import UserApiService from "../../services/user-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
 import "../App/App.css";
 
-class LoginForm extends Component {
+class ChangePasswordForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {},
+    onPasswordChangeSuccess: () => {},
   };
 
   static contextType = UserContext;
@@ -19,18 +18,18 @@ class LoginForm extends Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault();
-    const { email, password } = ev.target;
+    const { password } = ev.target;
 
     this.setState({ error: null });
 
-    AuthApiService.postLogin({
-      email: email.value,
+    UserApiService.updateUser({
       password: password.value,
     })
       .then((res) => {
-        email.value = "";
         password.value = "";
+        //TODO change processLogin
         this.context.processLogin(res.authToken);
+        //TODO change onLoginSuccess
         this.props.onLoginSuccess();
       })
       .catch((res) => {
@@ -45,41 +44,24 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form className="LoginForm" onSubmit={this.handleSubmit}>
+      <form className="ChangePasswordForm" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
-          <Label htmlFor="login-email-input" hidden>
-            Email
+          <Label htmlFor="change-password-input" hidden>
+            New Password
           </Label>
           <Input
-            ref={this.firstInput}
-            id="login-email-input"
-            name="email"
-            placeholder="email*"
-            required
-          />
-        </div>
-        <div>
-          <Label htmlFor="login-password-input" hidden>
-            Password
-          </Label>
-          <Input
-            id="login-password-input"
+            id="change-password-input"
             name="password"
             type="password"
-            placeholder="password*"
+            placeholder="new password*"
             required
           />
         </div>
-        <Link to="/player">
-          <Button type="submit">Log In</Button>
-        </Link>
-        <Link to="/register">
-          <Button type="button">Sign Up</Button>
-        </Link>
+        <Button type="submit">Save Password</Button>
       </form>
     );
   }
 }
 
-export default LoginForm;
+export default ChangePasswordForm;
