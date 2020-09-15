@@ -105,7 +105,7 @@ class Player extends Component {
               ?<button>Stop</button>
               :<button onClick={this.handlePlayTone}>Play</button>}
             </div>
-            <Timer />            
+            <Timer />
           </footer>
       </>
     );

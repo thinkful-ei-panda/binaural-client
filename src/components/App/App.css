@@ -7,9 +7,7 @@ a {
 }
 
 @media only screen and (min-width: 769px) {
-  .App {
-    margin: 0 15%;
-  }
+
 }
 @media only screen and (min-width: 1025px) {
 }
