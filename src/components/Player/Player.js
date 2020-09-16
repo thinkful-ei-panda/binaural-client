@@ -9,6 +9,7 @@ import WaveChips from "../WaveChips/WaveChips";
 import WaveSplash from "../WaveSplash/WaveSplash";
 import './Player.css'
 
+
 class Player extends Component {
   static defaultProps = {};
 
@@ -17,7 +18,11 @@ class Player extends Component {
     beat: 4,
     fundamental: 100,
     soundPlaying: false,
+
     activeChip:null,
+    oscillators:[],
+    timer:null,
+    timerInterval:null,
   };
 
   handleChipChange = async (chip) => {
@@ -43,6 +48,7 @@ class Player extends Component {
     }
       
   }
+
 
   handlePlayTone = (e) => {
     e.preventDefault();
@@ -80,11 +86,37 @@ class Player extends Component {
       oscillators.push(o);
     }
 
-    oscillators[0].start();
-    oscillators[1].start();
 
-    this.setState({ soundPlaying: true });
+    this.setState({oscillators:oscillators},() => {
+      this.state.oscillators[0].start();
+      this.state.oscillators[1].start();      
+    })
+
+    // oscillators[0].start();
+    // oscillators[1].start();
+
+    this.interval = setInterval(()=>this.handleUpdateTimer(),1000)
+    setTimeout(() => clearInterval(this.interval),this.state.timer*60*1000)
+
+    this.setState({soundPlaying:true})
+    
   };
+
+  handleUpdateTimer = () => {
+    console.log(this.state.timer)
+    this.setState({timer:this.state.timer-1})
+  }
+
+  handleStopTone = () => {    
+    this.state.oscillators[0].stop()
+    this.state.oscillators[1].stop()
+    clearInterval(this.interval)
+    this.setState({soundPlaying:false})    
+  }
+
+  handleSetTimer = (e) => {    
+    this.setState({timer:e.target.value*60})    
+  }
 
   render() {
     const { error } = this.state;
@@ -99,13 +131,13 @@ class Player extends Component {
 
           <footer className='player'>
             <div role="alert">{error && <p>{error}</p>}</div>            
-            <WaveChips chips={chips} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
+            <WaveChips chips={chips} soundPlaying={this.state.soundPlaying} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
             <div>
               {this.state.soundPlaying
-              ?<button>Stop</button>
-              :<button onClick={this.handlePlayTone}>Play</button>}
+              ?<button onClick = {this.handleStopTone}>Stop</button>
+              :<button disabled={this.state.loading} onClick={this.handlePlayTone}>Play</button>}
             </div>
-            <Timer />            
+            <Timer handleSetTimer = {this.handleSetTimer} timer={this.state.timer} soundPlaying={this.state.soundPlaying}/>
           </footer>
       </>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Input, Required, Label } from "../Form/Form";
 import UserApiService from "../../services/user-api-service";
+import TokenService from "../../services/token-service";
 import Button from "../Button/Button";
 import UserContext from "../../contexts/UserContext";
 import "../App/App.css";
@@ -24,10 +25,11 @@ class RegistrationForm extends Component {
       email: email.value,
       password: password.value,
     })
-      .then((user) => {
+      .then((res) => {
         name.value = "";
         email.value = "";
         password.value = "";
+        TokenService.saveAuthToken(res.authToken);
         this.props.onRegistrationSuccess();
       })
       .catch((res) => {

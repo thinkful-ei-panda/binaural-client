@@ -18,10 +18,10 @@ class PlayerRoute extends Component {
   };
 
   renderLogoutLink() {
-    // const { user } = this.state;
+    const { user } = this.context;
     return (
       <div>
-        <span>Logged in as {/* {this.user.name} */}</span>
+        <span>Logged in as {user.name}</span>
         <nav>
           <Link onClick={this.handleLogoutClick} to="/login">
             Logout
@@ -36,9 +36,8 @@ class PlayerRoute extends Component {
       <section>
         <p>Best Experienced Through Headphones</p>
         {this.renderLogoutLink()}
-        <h2>Change Password</h2>        
+        <h2>Change Password</h2>
         <Player />
-        
       </section>
     );
   }

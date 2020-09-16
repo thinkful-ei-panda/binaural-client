@@ -4,10 +4,11 @@ class WaveSplash extends React.Component{
   render(){
     return (
       <>
-        Hello
+        Wave Image
       </>
     )
   }
 }
 
 export default WaveSplash
+
