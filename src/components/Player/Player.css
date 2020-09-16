@@ -1,0 +1,16 @@
+.player{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+  display:flex;
+  flex-direction: column;  
+  background-color: black;
+  justify-content: center;
+}
+
+.chip-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}

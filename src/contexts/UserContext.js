@@ -5,6 +5,7 @@ import IdleService from "../services/idle-service";
 
 const UserContext = React.createContext({
   users: [],
+  admin: false,
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -18,7 +19,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, error: null };
+    const state = { user: {}, admin: false, error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
 
@@ -27,7 +28,7 @@ export class UserProvider extends Component {
         id: jwtPayload.user_id,
         name: jwtPayload.name,
         email: jwtPayload.sub,
-        admin: jwtPayload.false,
+        admin: jwtPayload.admin,
       };
 
     this.state = state;
@@ -68,7 +69,7 @@ export class UserProvider extends Component {
       id: jwtPayload.user_id,
       name: jwtPayload.name,
       email: jwtPayload.sub,
-      admin: jwtPayload.false,
+      admin: jwtPayload.admin,
     });
     IdleService.registerIdleTimerResets();
     TokenService.queueCallbackBeforeExpiry(() => {
@@ -111,6 +112,7 @@ export class UserProvider extends Component {
     const value = {
       user: this.state.user,
       error: this.state.error,
+      admin: this.state.admin,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,

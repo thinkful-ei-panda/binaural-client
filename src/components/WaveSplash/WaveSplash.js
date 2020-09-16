@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react'
 
-class WaveSplash extends React.Component {
-  render() {
-    return <>Hello</>;
+class WaveSplash extends React.Component{
+  render(){
+    return (
+      <>
+        Wave Image
+      </>
+    )
   }
 }
 
-export default WaveSplash;
+export default WaveSplash
+

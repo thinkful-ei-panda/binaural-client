@@ -40,29 +40,29 @@ export default class App extends Component {
             <Route exact path={"/"} component={WelcomeRoute} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
+            {/* <Route path={'/learn'} component={LearnRoute} /> */}
+            <Route
+              exact
+              path="/learn"
+              component={
+                TokenService.hasAuthToken() && this.context.user.admin === true
+                  ? Admin
+                  : LearnRoute
+              }
+            />
 
             {/* <Route
-              path="/admin"
-              component={this.context.user.admin === true ? Admin : LearnRoute}
-            /> */}
-
-            {/* <Route
-              path="/hello"
-              render={() => {
-                this.context.user.admin ?
-                  
-                return (
-                  <div className="jumbotron">
-                    {" "}
-                    <h1 className="display-3">Hello, world!</h1>{" "}
-                  </div>
-                );
-              }}
-            /> */}
+              exact
+              path="/learn"
+              {...(TokenService.hasAuthToken() &&
+                this.context.user.admin === true
+                ? this.component = Admin
+								: (this.component = LearnRoute))}
+						/> */}
 
             <Route path={"/admin"} component={Admin} />
 
-            <Route path={"/learn"} component={LearnRoute} />
+            {/* <Route path={"/learn"} component={LearnRoute} /> */}
 
             <Route path={"/player"} component={PlayerRoute} />
             <PrivateRoute path={"/change"} component={ChangePasswordRoute} />
