@@ -30,8 +30,8 @@ const UserApiService = {
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
 	},
-	updateUser(userId) {
-		return fetch(`${config.API_ENDPOINT}/api/user/${userId}`, {
+	updateUserPassword(userId) {
+		return fetch(`${config.API_ENDPOINT}/user/:id`, {
 			method: 'PATCH',
 			headers: {
 				'content-type': 'application/json',

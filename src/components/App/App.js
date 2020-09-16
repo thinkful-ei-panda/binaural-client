@@ -39,6 +39,7 @@ export default class App extends Component {
 					<Switch>
 						<Route exact path={'/'} component={WelcomeRoute} />
 						<PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
+						<PublicOnlyRoute path={'/change'} component={ChangePasswordRoute} />
 						<PublicOnlyRoute path={'/login'} component={LoginRoute} />
 						{/* <Route path={'/learn'} component={LearnRoute} /> */}
 						<Route
@@ -65,7 +66,7 @@ export default class App extends Component {
 						{/* <Route path={"/learn"} component={LearnRoute} /> */}
 
 						<Route path={'/player'} component={PlayerRoute} />
-						<PrivateRoute path={'/change'} component={ChangePasswordRoute} />
+						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
 						<Route component={NotFoundRoute} />
 					</Switch>
 				</main>

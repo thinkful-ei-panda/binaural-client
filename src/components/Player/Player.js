@@ -4,9 +4,9 @@ import React, { Component } from "react";
 // import Button from "../Button/Button";
 import "../App/App.css";
 import Timer from "../Timer/Timer";
-import Visualizer from "../Visualizer/Visualizer";
+//import Visualizer from "../Visualizer/Visualizer";
 import WaveChips from "../WaveChips/WaveChips";
-import WaveSplash from "../WaveSplash/WaveSplash";
+//import WaveSplash from "../WaveSplash/WaveSplash";
 import './Player.css'
 
 
@@ -123,11 +123,11 @@ class Player extends Component {
     const chips = ['Delta','Theta','Alpha','Beta','Gamma']
     return (
       <>
-        {this.state.soundPlaying ? (
+        {/* {this.state.soundPlaying ? (
           <Visualizer beat={this.state.beat} />
         ) : (
           <WaveSplash />
-        )}
+        )} */}
 
           <footer className='player'>
             <div role="alert">{error && <p>{error}</p>}</div>            
