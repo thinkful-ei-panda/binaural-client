@@ -36,7 +36,7 @@ class PlayerRoute extends Component {
       <section>
         <p>Best Experienced Through Headphones</p>
         {this.renderLogoutLink()}
-        <h2>Change Password</h2>        
+        <h2>Change Password</h2>
         <Player />
         
       </section>

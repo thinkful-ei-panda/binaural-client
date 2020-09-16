@@ -2,10 +2,10 @@ import React from 'react'
 
 class WaveChip extends React.Component{
   render() {
-    const { chip, handleChipChange, activeChip } = this.props
+    const { chip, handleChipChange, activeChip, soundPlaying} = this.props
     return (
       <div>
-        <button className={activeChip===chip ? "activeChip" : "chip"} onClick={() => handleChipChange(chip)}>{chip}</button>
+        <button disabled={soundPlaying} className={activeChip===chip ? "activeChip" : "chip"} onClick={() => handleChipChange(chip)}>{chip}</button>
       </div>
     )
   }
