@@ -3,29 +3,18 @@
 * {
   box-sizing: border-box;
 }
-html,
+
 body {
   width: 100%;
   min-height: 100%;
-}
-html {
-  position: relative;
-}
-body {
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  position: absolute;
   background-color: black;
   color: white;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-:root {
-  width: 100%;
-  --font-size: calc(10px + 1vmin);
 }
