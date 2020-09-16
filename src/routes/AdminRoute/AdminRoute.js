@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
-import Learn from "../../components/Learn/Learn";
+import Admin from "../../components/Admin/Admin";
 
-class LearnRoute extends Component {
+class ChangePasswordRoute extends Component {
   static defaultProps = {
     location: {},
     history: {
@@ -16,15 +16,18 @@ class LearnRoute extends Component {
   render() {
     return (
       <section>
-        <h2>Turn On, Tune In, Drop Out</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <Learn />
+        <div>
+          <h2>Admin</h2>
+          {this.renderLogoutLink()}
+        </div>
+        <Admin />
       </section>
     );
   }
 }
 
-export default LearnRoute;
+export default ChangePasswordRoute;

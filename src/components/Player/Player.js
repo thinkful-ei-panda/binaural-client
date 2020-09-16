@@ -9,6 +9,7 @@ import WaveChips from "../WaveChips/WaveChips";
 import WaveSplash from "../WaveSplash/WaveSplash";
 import './Player.css'
 
+
 class Player extends Component {
   static defaultProps = {};
 
@@ -17,6 +18,7 @@ class Player extends Component {
     beat: 4,
     fundamental: 100,
     soundPlaying: false,
+
     activeChip:null,
     oscillators:[],
     timer:null,
@@ -46,6 +48,7 @@ class Player extends Component {
     }
       
   }
+
 
   handlePlayTone = (e) => {
     e.preventDefault();
@@ -82,6 +85,7 @@ class Player extends Component {
       o.connect(panNodes[pan]);
       oscillators.push(o);
     }
+
 
     this.setState({oscillators:oscillators},() => {
       this.state.oscillators[0].start();

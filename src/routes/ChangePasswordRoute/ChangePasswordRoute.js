@@ -13,11 +13,9 @@ class ChangePasswordRoute extends Component {
 
   static contextType = UserContext;
 
-  //update code block for "change password"
   handlePasswordChangeSuccess = () => {
-    const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/";
-    history.push(destination);
+    const { history } = this.props;
+    history.push("/login");
   };
 
   handleLogoutClick = () => {
@@ -25,11 +23,10 @@ class ChangePasswordRoute extends Component {
   };
 
   renderLogoutLink() {
-    // const { user } = this.state;
+    const { user } = this.context;
     return (
       <div>
-        {/* database isn't connected to pull user info */}
-        <span>`Logged in as {/* ${this.user.name} */}`</span>
+        <span>Logged in as {user.name}</span>
         <nav>
           <Link onClick={this.handleLogoutClick} to="/login">
             Logout

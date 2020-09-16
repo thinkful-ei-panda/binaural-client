@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Input, Label } from "../Form/Form";
 import UserApiService from "../../services/user-api-service";
 import UserContext from "../../contexts/UserContext";
@@ -27,9 +28,9 @@ class ChangePasswordForm extends Component {
     })
       .then((res) => {
         password.value = "";
-        //TODO change processLogin
+        //TODO change processLogin to processChange function
         this.context.processLogin(res.authToken);
-        //TODO change onLoginSuccess
+        //TODO change onLoginSuccess to an onChangeSuccess function
         this.props.onLoginSuccess();
       })
       .catch((res) => {
@@ -37,8 +38,9 @@ class ChangePasswordForm extends Component {
       });
   };
 
+  //TODO the .focus is breaking the page
   componentDidMount() {
-    this.firstInput.current.focus();
+    // this.firstInput.current.focus();
   }
 
   render() {
@@ -58,7 +60,9 @@ class ChangePasswordForm extends Component {
             required
           />
         </div>
-        <Button type="submit">Save Password</Button>
+        <Link onClick={this.context.handleLogoutClick} to="/login">
+          <Button type="submit">Save Password</Button>
+        </Link>
       </form>
     );
   }

@@ -11,3 +11,4 @@ class WaveSplash extends React.Component{
 }
 
 export default WaveSplash
+
