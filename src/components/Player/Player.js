@@ -107,8 +107,12 @@ class Player extends Component {
   handleStopTone = () => {    
     this.state.oscillators[0].stop()
     this.state.oscillators[1].stop()
-    clearInterval(this.soundTimerInterval)
-    this.setState({soundPlaying:false,timer:null})
+    clearInterval(this.soundTimerInterval)    
+    if(this.state.timer === 0){
+      this.setState({soundPlaying:false,timer:null})
+    }else{
+      this.setState({soundPlaying:false})
+    }
   }
 
   //increments and sets timer state when user clicks timer
@@ -139,12 +143,12 @@ class Player extends Component {
         )}
 
         <footer className='player'>
-          <div role="alert">{error && <p>{error}</p>}</div>            
+          <div role="alert">{error && <p>{error}</p>}</div>
           <WaveChips chips={chips} soundPlaying={this.state.soundPlaying} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
           <div>
             {this.state.soundPlaying
-            ?<img src='./PlayerButtonImages/pause.png' alt='pause' onClick = {this.handleStopTone} />
-            :<img src='./PlayerButtonImages/play.png' alt='play' disabled={this.state.loading} onClick={this.handlePlayTone} />}
+            ?<img className='button-icon' src={require('./PlayerButtonImages/pause.png')} alt='pause' onClick = {this.handleStopTone} />
+            :<img className='button-icon' src={require('./PlayerButtonImages/play.png')} alt='play' disabled={this.state.loading} onClick={this.handlePlayTone} />}
           </div>
           <Timer handleSetTimer = {this.handleSetTimer} timer={this.state.timer} soundPlaying={this.state.soundPlaying}/>
         </footer>
