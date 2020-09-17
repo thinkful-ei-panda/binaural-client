@@ -94,9 +94,13 @@ input {
   color: #E0FEFF;
   border: 0px;
   margin-bottom: 15px;
-  padding: 10px 5px;
+  padding: 10px 10px;
   box-shadow: 0 2px 5px #E0FEFF, 0 2px 5px #E0FEFF;
   min-width: 180px;
+}
+
+input::placeholder {
+  color: white;
 }
 
 /* star field */
