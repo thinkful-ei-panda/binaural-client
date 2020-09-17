@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import Header from '../../components/Header/Header';
 
 class RegistrationRoute extends Component {
 	static defaultProps = {
@@ -15,12 +16,12 @@ class RegistrationRoute extends Component {
 
 	render() {
 		return (
-			<section>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			<section className="container">
+				<Header />
+				<p className="tagline">
+				Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness
 				</p>
-				<h2>Sign up</h2>
+				<h2>Sign Up</h2>
 				<RegistrationForm
 					onRegistrationSuccess={this.handleRegistrationSuccess}
 				/>

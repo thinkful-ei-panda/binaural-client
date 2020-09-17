@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 import Learn from "../../components/Learn/Learn";
+import Header from "../../components/Header/Header";
 
 class LearnRoute extends Component {
   static defaultProps = {
@@ -16,6 +17,7 @@ class LearnRoute extends Component {
   render() {
     return (
       <section>
+        <Header />
         <h2>Turn On, Tune In, Drop Out</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

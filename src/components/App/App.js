@@ -32,10 +32,11 @@ export default class App extends Component {
 		const { hasError } = this.state;
 		return (
 			<div className="App">
-				<Header />
+				<div id="stars"></div>
+				<div id="stars2"></div>
+				<div id="stars3"></div>
 				<main>
 					{hasError && <p>There was an error! Oh no!</p>}
-
 					<Switch>
 						<Route exact path={'/'} component={WelcomeRoute} />
 						<PublicOnlyRoute path={'/register'} component={RegistrationRoute} />

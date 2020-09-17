@@ -6,7 +6,7 @@ import "../App/App.css";
 class Welcome extends Component {
   render() {
     return (
-      <section id="welcome">
+      <section className="button-container">
         <Link to="/learn">
           <Button type="button">Learn More</Button>
         </Link>
