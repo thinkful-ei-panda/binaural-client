@@ -45,8 +45,7 @@ class Player extends Component {
         break;
       default:
         console.log(chip)        
-    }
-      
+    }      
   }
 
 
@@ -86,36 +85,46 @@ class Player extends Component {
       oscillators.push(o);
     }
 
+    this.setState({oscillators:oscillators, soundPlaying:true},() => {
 
-    this.setState({oscillators:oscillators},() => {
       this.state.oscillators[0].start();
       this.state.oscillators[1].start();      
     })
 
-    // oscillators[0].start();
-    // oscillators[1].start();
-
-    this.interval = setInterval(()=>this.handleUpdateTimer(),1000)
-    setTimeout(() => clearInterval(this.interval),this.state.timer*60*1000)
-
-    this.setState({soundPlaying:true})
     
+    if(this.state.timer){
+      this.soundTimerInterval = setInterval(()=>this.handleUpdateTimer(),1000)
+      setTimeout(() => this.handleStopTone(),this.state.timer*1000)
+    }
   };
 
+  //decrements timer on interval tick (helper function)
   handleUpdateTimer = () => {
-    console.log(this.state.timer)
     this.setState({timer:this.state.timer-1})
   }
 
+  //stops tone when stop is clicked or when timer runs out
   handleStopTone = () => {    
     this.state.oscillators[0].stop()
     this.state.oscillators[1].stop()
-    clearInterval(this.interval)
-    this.setState({soundPlaying:false})    
+    clearInterval(this.soundTimerInterval)
+    this.setState({soundPlaying:false,timer:null})
   }
 
-  handleSetTimer = (e) => {    
-    this.setState({timer:e.target.value*60})    
+  //increments and sets timer state when user clicks timer
+  handleSetTimer = () => {
+    let timerSettings = [1,5,10,15,20,30,45,60]
+    if(this.state.timer === 60*60){
+      this.setState({timer:null})
+    }
+    else {
+      for(let i=0; i < timerSettings.length; i++){
+        if (this.state.timer < timerSettings[i]*60){
+          this.setState({timer:timerSettings[i]*60})
+          break;
+        }
+      }
+    }    
   }
 
   render() {
@@ -126,19 +135,19 @@ class Player extends Component {
         {this.state.soundPlaying ? (
           <Visualizer beat={this.state.beat} />
         ) : (
-          <WaveSplash />
+          <WaveSplash activeChip={this.state.activeChip}/>
         )}
 
-          <footer className='player'>
-            <div role="alert">{error && <p>{error}</p>}</div>            
-            <WaveChips chips={chips} soundPlaying={this.state.soundPlaying} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
-            <div>
-              {this.state.soundPlaying
-              ?<button onClick = {this.handleStopTone}>Stop</button>
-              :<button disabled={this.state.loading} onClick={this.handlePlayTone}>Play</button>}
-            </div>
-            <Timer handleSetTimer = {this.handleSetTimer} timer={this.state.timer} soundPlaying={this.state.soundPlaying}/>
-          </footer>
+        <footer className='player'>
+          <div role="alert">{error && <p>{error}</p>}</div>            
+          <WaveChips chips={chips} soundPlaying={this.state.soundPlaying} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
+          <div>
+            {this.state.soundPlaying
+            ?<img src='./PlayerButtonImages/pause.png' alt='pause' onClick = {this.handleStopTone} />
+            :<img src='./PlayerButtonImages/play.png' alt='play' disabled={this.state.loading} onClick={this.handlePlayTone} />}
+          </div>
+          <Timer handleSetTimer = {this.handleSetTimer} timer={this.state.timer} soundPlaying={this.state.soundPlaying}/>
+        </footer>
       </>
     );
   }
