@@ -29,8 +29,8 @@ class RegistrationForm extends Component {
         name.value = "";
         email.value = "";
         password.value = "";
-        TokenService.saveAuthToken(res.authToken);
         this.props.onRegistrationSuccess();
+        TokenService.saveAuthToken(res.authToken);
       })
       .catch((res) => {
         this.setState({ error: res.error });
