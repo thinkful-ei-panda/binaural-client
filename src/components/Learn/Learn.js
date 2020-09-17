@@ -9,49 +9,64 @@ class Learn extends Component {
 
   render() {
     return (
-      <section>
-        <img className="Delta" alt="" />
-        <p className="deltaInfo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <img className="Theta" alt="" />
-        <p className="thetaInfo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <img className="Alpha" alt="" />
-        <p className="alphaInfo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <img className="Beta" alt="" />
-        <p className="deltaInfo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <img className="Gamma" alt="" />
-        <p className="gammaInfo">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+      <>
+        <div className="item">
+          <h3>Delta</h3>
+          <img src="static/img/delta.png" className="Delta" alt="" />
+          <p className="deltaInfo">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div className="item">
+          <h3>Theta</h3>
+          <img src="static/img/theta.png" className="Theta" alt="" />
+          <p className="thetaInfo">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div className="item">
+          <h3>Alpha</h3>
+          <img src="static/img/alpha.png" className="Alpha" alt="" />
+          <p className="alphaInfo">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div className="item">
+          <h3>Beta</h3>
+          <img src="static/img/beta.png" className="Beta" alt="" />
+          <p className="deltaInfo">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div className="item">
+          <h3>Gamma</h3>
+          <img src="static/img/gamma.png" className="Gamma" alt="" />
+          <p className="gammaInfo">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
         {TokenService.hasAuthToken() ? (
           <div>
-            <Link to="player">
+            <Link to="/player">
               <button type="button">Binaural Player</button>
             </Link>
           </div>
         ) : (
           <div>
-            <Link to="register">
+            <Link to="/register">
               <button type="button">Sign Up</button>
             </Link>
-            <Link to="login">
+            <Link to="/login">
               <button type="button">Log In</button>
             </Link>
           </div>
         )}
-      </section>
+      </>
     );
   }
 }
