@@ -28,14 +28,14 @@ class Timer extends React.Component{
             {timer && `${minutes}:${seconds}`}
             {!timer && <span>&#8734;</span>}
           </div>
-          <img src='./PlayerButtonImages/timer.png' alt='timer' onClick={() => this.props.handleSetTimer()} />
+          <img className='button-icon' src={require('../Player/PlayerButtonImages/timer.png')} alt='timer' onClick={() => this.props.handleSetTimer()} />
         </div>
         :<div className='timer-container'>
           <div>
             {timer && `${minutes}:${seconds}`}
             {!timer && <span>&#8734;</span>}
           </div>
-          <img src='./PlayerButtonImages/timer.png' alt='timer' onClick={() => this.props.handleSetTimer()} />
+          <img className='button-icon' src={require('../Player/PlayerButtonImages/timer.png')} alt='timer' onClick={() => this.props.handleSetTimer()} />
         </div>}
         
         
