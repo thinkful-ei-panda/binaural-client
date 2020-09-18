@@ -7,11 +7,14 @@ const UserContext = React.createContext({
 	users: [],
 	admin: false,
 	error: null,
+	create_date: '',
 	setError: () => {},
 	clearError: () => {},
+	setUsersList: () => {},
 	setUser: () => {},
 	processLogin: () => {},
 	processLogout: () => {},
+	deleteUser: () => {},
 });
 
 export default UserContext;
@@ -29,6 +32,7 @@ export class UserProvider extends Component {
 				name: jwtPayload.name,
 				email: jwtPayload.sub,
 				admin: jwtPayload.admin,
+				create_date: jwtPayload.create_date,
 			};
 
 		this.state = state;
@@ -60,6 +64,17 @@ export class UserProvider extends Component {
 
 	setUser = (user) => {
 		this.setState({ user });
+	};
+	//setUsersList for pulling users into AdminRoute as list view
+	setUsersList = (users) => {
+		this.setState({ users });
+	};
+
+	deleteUser = (userId) => {
+		this.setState({
+			users: this.state.users.filter((user) => user.id !== userId),
+		});
+		this.componentDidMount();
 	};
 
 	processLogin = (authToken) => {
@@ -111,11 +126,15 @@ export class UserProvider extends Component {
 	render() {
 		const value = {
 			user: this.state.user,
+			users: this.state.users,
 			error: this.state.error,
 			admin: this.state.admin,
+			create_date: this.state.create_date,
 			setError: this.setError,
 			clearError: this.clearError,
 			setUser: this.setUser,
+			deleteUser: this.deleteUser,
+			setUsersList: this.setUsersList,
 			processLogin: this.processLogin,
 			processLogout: this.processLogout,
 			handleLogoutClick: this.handleLogoutClick,

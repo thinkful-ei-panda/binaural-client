@@ -1,33 +1,77 @@
-import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-import UserContext from "../../contexts/UserContext";
-import Admin from "../../components/Admin/Admin";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
+//import Admin from '../../components/Admin/Admin';
+import Button from '../../components/Button/Button';
+import UserApiService from '../../services/user-api-service';
+import UserInfo from '../../components/Admin/UserInfo';
+import TokenService from '../../services/token-service';
 
-class ChangePasswordRoute extends Component {
-  static defaultProps = {
-    location: {},
-    history: {
-      push: () => {},
-    },
-  };
+class AdminRoute extends Component {
+	static defaultProps = {
+		location: {},
+		history: {
+			push: () => {},
+		},
+	};
 
-  static contextType = UserContext;
+	static contextType = UserContext;
 
-  render() {
-    return (
-      <section>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <div>
-          <h2>Admin</h2>
-          {this.renderLogoutLink()}
-        </div>
-        <Admin />
-      </section>
-    );
-  }
+	componentDidMount() {
+		this.context.clearError();
+		UserApiService.getUsers()
+			.then(this.context.setUsersList)
+			.catch(this.context.setError);
+	}
+
+	handleDeleteUser = () => {
+		this.componentDidMount();
+	};
+
+	handleLogoutClick = (e) => {
+		this.context.processLogout();
+		const { location, history } = this.props;
+		const destination = (location.state || {}).from || '/login';
+		history.push(destination);
+	};
+
+	renderUsersList() {
+		const { users = [] } = this.context;
+		return users.map((user) => (
+			<UserInfo
+				key={user.id}
+				user={user}
+				onDeleteUser={this.handleDeleteUser}
+			/>
+		));
+	}
+
+	render() {
+		const { error } = this.context;
+		return (
+			<section>
+				<div>
+					<p>Logged in as {this.context.user.name}</p>
+					<Button id="logout" type="onClick" onClick={this.handleLogoutClick}>
+						Log Out
+					</Button>
+				</div>
+				<div>
+					<h2>Admin</h2>
+					<ul>
+						{error ? (
+							<p className="red">There was an error, try again</p>
+						) : (
+							this.renderUsersList()
+						)}
+					</ul>
+
+					{/* {this.renderLogoutLink()} */}
+				</div>
+				{/* <Admin /> */}
+			</section>
+		);
+	}
 }
 
-export default ChangePasswordRoute;
+export default AdminRoute;
