@@ -95,6 +95,7 @@ class Player extends Component {
         1000
       );
       setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
+
     }
   };
 

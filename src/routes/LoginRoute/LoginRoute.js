@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import UserContext from "../../contexts/UserContext";
+import Header from "../../components/Header/Header";
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -32,18 +33,13 @@ class LoginRoute extends Component {
     const { user } = this.context;
 
     return (
-      <section>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      <section className="container">
+        <Header />
+        <p className="tagline">
+        Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness
         </p>
-        <h2>Login</h2>
-        <LoginForm
-          onLoginSuccess={
-            user.admin ? this.handleAdminLogin : this.handleUserLogin
-          }
-        />
-        {/* <LoginForm onLoginSuccess={handleLoginSuccess} /> */}
+        <h2>Log In</h2>
+        <LoginForm onLoginSuccess={this.handleLoginSuccess} />
       </section>
     );
   }
