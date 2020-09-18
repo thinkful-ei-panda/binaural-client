@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Learn from "./Learn";
 
-describe(`Learn Component`, () => {
-  describe(`Smoke test`, () => {
-    it(`Renders without crashing`, () => {
-      const div = document.createElement("div");
-      ReactDOM.render(
-        <BrowserRouter>
-          <Learn />
-        </BrowserRouter>,
-        div
-      );
-      ReactDOM.unmountComponentAtNode(div);
-    });
+
+configure({adapter: new Adapter()});
+describe('<Learn />', () => {
+  it('renders without crashing', () => {
+    mount(
+      <BrowserRouter>
+        <Learn />
+      </BrowserRouter>,
+    );
   });
 });

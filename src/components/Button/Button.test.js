@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Button from "./Button";
 
-describe(`Button Component`, () => {
-  describe(`Smoke test`, () => {
-    it(`Renders without crashing`, () => {
-      const div = document.createElement("div");
-      ReactDOM.render(
-        <BrowserRouter>
-          <Button />
-        </BrowserRouter>,
-        div
-      );
-      ReactDOM.unmountComponentAtNode(div);
-    });
+
+configure({adapter: new Adapter()});
+describe('<Button />', () => {
+  it('renders without crashing', () => {
+    mount(
+      <BrowserRouter>
+        <Button />
+      </BrowserRouter>,
+    );
   });
 });

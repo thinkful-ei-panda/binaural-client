@@ -32,16 +32,29 @@ const UserApiService = {
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
 	},
-	updateUser(userId) {
-		return fetch(`${config.API_ENDPOINT}/api/user/${userId}`, {
+
+	// TO UPDATE PASSWORD ON USER PROFILE - ChangePasswordForm.js
+	async updateUserPassword(user_id, user) {
+		const res = await fetch(`${config.API_ENDPOINT}/user/${user_id}`, {
 			method: 'PATCH',
 			headers: {
 				'content-type': 'application/json',
 				Authorization: `Bearer ${TokenService.getAuthToken()}`,
 			},
-		}).then((res) =>
-			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-		);
+			body: JSON.stringify(user)
+		}) 
+		if(res.status === 204){
+		  return {}
+		}
+		else {
+		  const json = await res.json();
+		  return({ error: json.error }) 
+		}
+	  },
+// =======
+// 		}).then((res) =>
+// 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+// 		);
 	},
 	deleteUserById(userId) {
 		return fetch(`${config.API_ENDPOINT}/admin/${userId}`, {

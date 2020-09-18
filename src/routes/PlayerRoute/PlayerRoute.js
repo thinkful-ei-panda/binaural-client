@@ -34,9 +34,9 @@ class PlayerRoute extends Component {
   render() {
     return (
       <section>
-        <p>Best Experienced Through Headphones</p>
+        <p>Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness</p>
         {this.renderLogoutLink()}
-        <h2>Change Password</h2>
+        <Link to='/change'><h2>Change Password</h2></Link>
         <Player />
       </section>
     );
