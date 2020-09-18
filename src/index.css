@@ -14,7 +14,7 @@
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* body */
@@ -181,4 +181,3 @@ input::placeholder {
 		max-width: 90%;
 	}
 
-}

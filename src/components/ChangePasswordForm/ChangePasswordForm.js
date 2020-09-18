@@ -50,13 +50,13 @@ class ChangePasswordForm extends Component {
         <div className="alert" role="alert">{error && <p>{error}</p>}</div>
         <div>
           <Label htmlFor="change-password-input" hidden>
-            New Password
+            Change Password
           </Label>
           <Input
             id="change-password-input"
             name="password"
             type="password"
-            placeholder="new password*"
+            placeholder="new password"
             required
           />
         </div>

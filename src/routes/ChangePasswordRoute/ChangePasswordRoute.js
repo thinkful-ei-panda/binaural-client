@@ -40,8 +40,7 @@ class ChangePasswordRoute extends Component {
     return (
       <section>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness
         </p>
         {this.renderLogoutLink()}
         <h2>Change Password</h2>

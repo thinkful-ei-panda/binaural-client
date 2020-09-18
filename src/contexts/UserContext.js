@@ -1,129 +1,148 @@
-import React, { Component } from 'react';
-import AuthApiService from '../services/auth-api-service';
-import TokenService from '../services/token-service';
-import IdleService from '../services/idle-service';
+import React, { Component } from "react";
+import AuthApiService from "../services/auth-api-service";
+import TokenService from "../services/token-service";
+import IdleService from "../services/idle-service";
 
 const UserContext = React.createContext({
-	users: [],
-	admin: false,
-	error: null,
-	setError: () => {},
-	clearError: () => {},
-	setUser: () => {},
-	processLogin: () => {},
-	processLogout: () => {},
+  users: [],
+  admin: false,
+  error: null,
+  create_date: "",
+  setError: () => {},
+  clearError: () => {},
+  setUsersList: () => {},
+  setUser: () => {},
+  processLogin: () => {},
+  processLogout: () => {},
+  deleteUser: () => {},
 });
 
 export default UserContext;
 
 export class UserProvider extends Component {
-	constructor(props) {
-		super(props);
-		const state = { user: {}, admin: false, error: null };
+  constructor(props) {
+    super(props);
+    const state = { user: {}, admin: false, error: null };
 
-		const jwtPayload = TokenService.parseAuthToken();
+    const jwtPayload = TokenService.parseAuthToken();
 
-		if (jwtPayload)
-			state.user = {
-				id: jwtPayload.user_id,
-				name: jwtPayload.name,
-				email: jwtPayload.sub,
-				admin: jwtPayload.admin,
-			};
+    if (jwtPayload)
+      state.user = {
+        id: jwtPayload.user_id,
+        name: jwtPayload.name,
+        email: jwtPayload.sub,
+        admin: jwtPayload.admin,
+        create_date: jwtPayload.create_date,
+      };
 
-		this.state = state;
-		IdleService.setIdleCallback(this.logoutBecauseIdle);
-	}
+    this.state = state;
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
+  }
 
-	componentDidMount() {
-		if (TokenService.hasAuthToken()) {
-			IdleService.registerIdleTimerResets();
-			TokenService.queueCallbackBeforeExpiry(() => {
-				this.fetchRefreshToken();
-			});
-		}
-	}
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      IdleService.registerIdleTimerResets();
+      TokenService.queueCallbackBeforeExpiry(() => {
+        this.fetchRefreshToken();
+      });
+    }
+  }
 
-	componentWillUnmount() {
-		IdleService.unRegisterIdleResets();
-		TokenService.clearCallbackBeforeExpiry();
-	}
+  componentWillUnmount() {
+    IdleService.unRegisterIdleResets();
+    TokenService.clearCallbackBeforeExpiry();
+  }
 
-	setError = (error) => {
-		console.error(error);
-		this.setState({ error });
-	};
+  setError = (error) => {
+    console.error(error);
+    this.setState({ error });
+  };
 
-	clearError = () => {
-		this.setState({ error: null });
-	};
+  clearError = () => {
+    this.setState({ error: null });
+  };
 
-	setUser = (user) => {
-		this.setState({ user });
-	};
+  setUser = (user) => {
+    this.setState({ user });
+  };
+  //setUsersList for pulling users into AdminRoute as list view
+  setUsersList = (users) => {
+    this.setState({ users });
+  };
 
-	processLogin = (authToken) => {
-		TokenService.saveAuthToken(authToken);
-		const jwtPayload = TokenService.parseAuthToken();
-		this.setUser({
-			id: jwtPayload.user_id,
-			name: jwtPayload.name,
-			email: jwtPayload.sub,
-			admin: jwtPayload.admin,
-		});
-		IdleService.registerIdleTimerResets();
-		TokenService.queueCallbackBeforeExpiry(() => {
-			this.fetchRefreshToken();
-		});
-	};
+  deleteUser = (userId) => {
+    this.setState({
+      users: this.state.users.filter((user) => user.id !== userId),
+    });
+    this.componentDidMount();
+  };
 
-	processLogout = () => {
-		TokenService.clearAuthToken();
-		TokenService.clearCallbackBeforeExpiry();
-		IdleService.unRegisterIdleResets();
-		this.setUser({});
-	};
+  processLogin = (authToken) => {
+    TokenService.saveAuthToken(authToken);
+    const jwtPayload = TokenService.parseAuthToken();
+    this.setUser({
+      id: jwtPayload.user_id,
+      name: jwtPayload.name,
+      email: jwtPayload.sub,
+      admin: jwtPayload.admin,
+    });
+    IdleService.registerIdleTimerResets();
+    TokenService.queueCallbackBeforeExpiry(() => {
+      this.fetchRefreshToken();
+    });
+  };
 
-	logoutBecauseIdle = () => {
-		TokenService.clearAuthToken();
-		TokenService.clearCallbackBeforeExpiry();
-		IdleService.unRegisterIdleResets();
-		this.setUser({ idle: true });
-	};
+  processLogout = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({});
+  };
 
-	fetchRefreshToken = () => {
-		AuthApiService.refreshToken()
-			.then((res) => {
-				TokenService.saveAuthToken(res.authToken);
-				TokenService.queueCallbackBeforeExpiry(() => {
-					this.fetchRefreshToken();
-				});
-			})
-			.catch((err) => {
-				this.setError(err);
-			});
-	};
+  logoutBecauseIdle = () => {
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({ idle: true });
+  };
 
-	handleLogoutClick = () => {
-		this.context.processLogout();
-	};
+  fetchRefreshToken = () => {
+    AuthApiService.refreshToken()
+      .then((res) => {
+        TokenService.saveAuthToken(res.authToken);
+        TokenService.queueCallbackBeforeExpiry(() => {
+          this.fetchRefreshToken();
+        });
+      })
+      .catch((err) => {
+        this.setError(err);
+      });
+  };
 
-	render() {
-		const value = {
-			user: this.state.user,
-			error: this.state.error,
-			admin: this.state.admin,
-			setError: this.setError,
-			clearError: this.clearError,
-			setUser: this.setUser,
-			processLogin: this.processLogin,
-			processLogout: this.processLogout,
-			handleLogoutClick: this.handleLogoutClick,
-		};
-		return (
-			<UserContext.Provider value={value}>
-				{this.props.children}
-			</UserContext.Provider>
-		);
-	}
+  handleLogoutClick = () => {
+    this.context.processLogout();
+  };
+
+  render() {
+    const value = {
+      user: this.state.user,
+      users: this.state.users,
+      error: this.state.error,
+      admin: this.state.admin,
+      create_date: this.state.create_date,
+      setError: this.setError,
+      clearError: this.clearError,
+      setUser: this.setUser,
+      deleteUser: this.deleteUser,
+      setUsersList: this.setUsersList,
+      processLogin: this.processLogin,
+      processLogout: this.processLogout,
+      handleLogoutClick: this.handleLogoutClick,
+    };
+    return (
+      <UserContext.Provider value={value}>
+        {this.props.children}
+      </UserContext.Provider>
+    );
+  }
 }
