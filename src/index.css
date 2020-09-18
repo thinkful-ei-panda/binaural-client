@@ -17,6 +17,7 @@
   box-sizing: border-box;
 }
 
+/* body */
 body {
 	height: 100vh;
 	width: 100%;
@@ -31,6 +32,7 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #010612 100%) fixed center center / cover no-repeat;
 }
 
+/* header fonts */
 h1 {
   font-family: 'bjorkregular', sans-serif;
   color: #E0FEFF;
@@ -39,7 +41,6 @@ h1 {
   font-weight: 100;
 }
 
-/* header fonts */
 h1 a{
   color: #E0FEFF;
 }
@@ -49,10 +50,12 @@ h2 {
   color: #E0FEFF;
 }
 
+/* misc text */
 .tagline {
   margin-top:0px;
 }
 
+/* containers */
 .container {
 	max-width: 100%;
 	margin: auto;
@@ -164,4 +167,6 @@ input::placeholder {
     transform: translateY(-2000px);
   }
 }
+
+/* media queries */
 
