@@ -2,9 +2,14 @@ import React from 'react'
 
 class WaveSplash extends React.Component{
   render(){
+    let wave
+    if(this.props.activeChip){
+      wave = this.props.activeChip.toLowerCase()
+    }
+    
     return (
       <>
-        Wave Image
+        {this.props.activeChip && <img src={require(`./WaveSplashImages/${wave}.png`)} alt={this.props.activeChip} />}
       </>
     )
   }

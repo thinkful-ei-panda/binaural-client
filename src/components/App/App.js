@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+//import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from "../PublicOnlyRoute/PublicOnlyRoute";
 import RegistrationRoute from "../../routes/RegistrationRoute/RegistrationRoute";
 import LoginRoute from "../../routes/LoginRoute/LoginRoute";
-import Admin from "../../components/Admin/Admin";
+//import Admin from '../../components/Admin/Admin';
 import PlayerRoute from "../../routes/PlayerRoute/PlayerRoute";
 import LearnRoute from "../../routes/LearnRoute/LearnRoute";
 import ChangePasswordRoute from "../../routes/ChangePasswordRoute/ChangePasswordRoute";
@@ -15,6 +15,7 @@ import TokenService from "../../services/token-service";
 import UserContext from "../../contexts/UserContext";
 import "../../index.css";
 import "./App.css";
+import AdminRoute from "../../routes/AdminRoute/AdminRoute";
 
 export default class App extends Component {
   state = {
@@ -39,6 +40,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path={"/"} component={WelcomeRoute} />
             <PublicOnlyRoute path={"/register"} component={RegistrationRoute} />
+            <PublicOnlyRoute path={"/change"} component={ChangePasswordRoute} />
             <PublicOnlyRoute path={"/login"} component={LoginRoute} />
             {/* <Route path={'/learn'} component={LearnRoute} /> */}
             <Route
@@ -46,7 +48,7 @@ export default class App extends Component {
               path="/learn"
               component={
                 TokenService.hasAuthToken() && this.context.user.admin === true
-                  ? Admin
+                  ? AdminRoute
                   : LearnRoute
               }
             />
@@ -60,12 +62,12 @@ export default class App extends Component {
 								: (this.component = LearnRoute))}
 						/> */}
 
-            <Route path={"/admin"} component={Admin} />
+            <Route path={"/admin"} component={AdminRoute} />
 
             {/* <Route path={"/learn"} component={LearnRoute} /> */}
 
             <Route path={"/player"} component={PlayerRoute} />
-            <PrivateRoute path={"/change"} component={ChangePasswordRoute} />
+            {/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
             <Route component={NotFoundRoute} />
           </Switch>
         </main>
