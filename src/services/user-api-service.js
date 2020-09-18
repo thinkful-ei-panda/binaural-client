@@ -4,7 +4,9 @@ import TokenService from '../services/token-service';
 const UserApiService = {
 	getUsers() {
 		return fetch(`${config.API_ENDPOINT}/admin`, {
-			headers: {},
+			headers: {
+				Authorization: `Bearer ${TokenService.getAuthToken()}`,
+			},
 		}).then((res) =>
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
@@ -40,6 +42,18 @@ const UserApiService = {
 		}).then((res) =>
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
+	},
+	deleteUserById(userId) {
+		return fetch(`${config.API_ENDPOINT}/admin/${userId}`, {
+			method: 'DELETE',
+			headers: {
+				'content-type': 'application/json',
+				Authorization: `Bearer ${TokenService.getAuthToken()}`,
+			},
+			// }).then((res) =>
+			// 	!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+			// );
+		});
 	},
 };
 
