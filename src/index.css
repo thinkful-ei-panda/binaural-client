@@ -170,6 +170,11 @@ input::placeholder {
   }
 }
 
+/* alert */
+.alert {
+  max-width: 180px;
+}
+
 /* media queries */
 @media screen and (max-width: 600px) {
 	.container {
