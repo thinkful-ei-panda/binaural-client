@@ -14,7 +14,6 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import '../../index.css';
-import './App.css';
 
 export default class App extends Component {
 	state = {
