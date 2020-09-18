@@ -4,13 +4,14 @@ import React, { Component } from "react";
 // import Button from "../Button/Button";
 import "../App/App.css";
 import Timer from "../Timer/Timer";
-import Visualizer from "../Visualizer/Visualizer";
+//import Visualizer from "../Visualizer/Visualizer";
 import WaveChips from "../WaveChips/WaveChips";
-import WaveSplash from "../WaveSplash/WaveSplash";
-import './Player.css'
-
+//import WaveSplash from "../WaveSplash/WaveSplash";
+import UserContext from "../../contexts/UserContext";
+import "./Player.css";
 
 class Player extends Component {
+  static contextType = UserContext;
   static defaultProps = {};
 
   state = {
@@ -19,36 +20,33 @@ class Player extends Component {
     fundamental: 100,
     soundPlaying: false,
 
-    activeChip:null,
-    oscillators:[],
-    timer:null,
-    timerInterval:null,
+    activeChip: null,
+    oscillators: [],
+    timer: null,
+    timerInterval: null,
   };
 
   handleChipChange = async (chip) => {
-    
-    switch(chip){
-      case 'Delta':
-        await this.setState({beat: 2,activeChip:'Delta'})
+    switch (chip) {
+      case "Delta":
+        await this.setState({ beat: 2, activeChip: "Delta" });
         break;
-      case 'Theta':
-        await this.setState({beat: 4,activeChip:'Theta'})
+      case "Theta":
+        await this.setState({ beat: 4, activeChip: "Theta" });
         break;
-      case 'Alpha':
-        await this.setState({beat: 8,activeChip:'Alpha'})
+      case "Alpha":
+        await this.setState({ beat: 8, activeChip: "Alpha" });
         break;
-      case 'Beta':
-        await this.setState({beat: 12,activeChip:'Beta'})
+      case "Beta":
+        await this.setState({ beat: 12, activeChip: "Beta" });
         break;
-      case 'Gamma':
-        await this.setState({beat: 30,activeChip:'Gamma'})
+      case "Gamma":
+        await this.setState({ beat: 30, activeChip: "Gamma" });
         break;
       default:
-        console.log(chip)        
+        console.log(chip);
     }
-      
-  }
-
+  };
 
   handlePlayTone = (e) => {
     e.preventDefault();
@@ -86,59 +84,95 @@ class Player extends Component {
       oscillators.push(o);
     }
 
-
-    this.setState({oscillators:oscillators},() => {
+    this.setState({ oscillators: oscillators, soundPlaying: true }, () => {
       this.state.oscillators[0].start();
-      this.state.oscillators[1].start();      
-    })
+      this.state.oscillators[1].start();
+    });
 
-    // oscillators[0].start();
-    // oscillators[1].start();
-
-    this.interval = setInterval(()=>this.handleUpdateTimer(),1000)
-    setTimeout(() => clearInterval(this.interval),this.state.timer*60*1000)
-
-    this.setState({soundPlaying:true})
-    
+    if (this.state.timer) {
+      this.soundTimerInterval = setInterval(
+        () => this.handleUpdateTimer(),
+        1000
+      );
+      setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
+    }
   };
 
+  //decrements timer on interval tick (helper function)
   handleUpdateTimer = () => {
-    console.log(this.state.timer)
-    this.setState({timer:this.state.timer-1})
-  }
+    this.setState({ timer: this.state.timer - 1 });
+  };
 
-  handleStopTone = () => {    
-    this.state.oscillators[0].stop()
-    this.state.oscillators[1].stop()
-    clearInterval(this.interval)
-    this.setState({soundPlaying:false})    
-  }
+  //stops tone when stop is clicked or when timer runs out
+  handleStopTone = () => {
+    this.state.oscillators[0].stop();
+    this.state.oscillators[1].stop();
+    clearInterval(this.soundTimerInterval);
+    if (this.state.timer === 0) {
+      this.setState({ soundPlaying: false, timer: null });
+    } else {
+      this.setState({ soundPlaying: false });
+    }
+  };
 
-  handleSetTimer = (e) => {    
-    this.setState({timer:e.target.value*60})    
-  }
+  //increments and sets timer state when user clicks timer
+  handleSetTimer = () => {
+    let timerSettings = [1, 5, 10, 15, 20, 30, 45, 60];
+    if (this.state.timer === 60 * 60) {
+      this.setState({ timer: null });
+    } else {
+      for (let i = 0; i < timerSettings.length; i++) {
+        if (this.state.timer < timerSettings[i] * 60) {
+          this.setState({ timer: timerSettings[i] * 60 });
+          break;
+        }
+      }
+    }
+  };
 
   render() {
     const { error } = this.state;
-    const chips = ['Delta','Theta','Alpha','Beta','Gamma']
+    const chips = ["Delta", "Theta", "Alpha", "Beta", "Gamma"];
     return (
       <>
-        {this.state.soundPlaying ? (
+        {/* {this.state.soundPlaying ? (
           <Visualizer beat={this.state.beat} />
         ) : (
-          <WaveSplash />
-        )}
+          <WaveSplash activeChip={this.state.activeChip} />
+        )} */}
 
-          <footer className='player'>
-            <div role="alert">{error && <p>{error}</p>}</div>            
-            <WaveChips chips={chips} soundPlaying={this.state.soundPlaying} activeChip={this.state.activeChip} handleChipChange={this.handleChipChange}/>
-            <div>
-              {this.state.soundPlaying
-              ?<button onClick = {this.handleStopTone}>Stop</button>
-              :<button disabled={this.state.loading} onClick={this.handlePlayTone}>Play</button>}
-            </div>
-            <Timer handleSetTimer = {this.handleSetTimer} timer={this.state.timer} soundPlaying={this.state.soundPlaying}/>
-          </footer>
+        <footer className="player">
+          <div role="alert">{error && <p>{error}</p>}</div>
+          <WaveChips
+            chips={chips}
+            soundPlaying={this.state.soundPlaying}
+            activeChip={this.state.activeChip}
+            handleChipChange={this.handleChipChange}
+          />
+          <div>
+            {this.state.soundPlaying ? (
+              <img
+                className="button-icon"
+                src="static/img/pause.png"
+                alt="pause"
+                onClick={this.handleStopTone}
+              />
+            ) : (
+              <img
+                className="button-icon"
+                src="static/img/play.png"
+                alt="play"
+                disabled={this.state.loading}
+                onClick={this.handlePlayTone}
+              />
+            )}
+          </div>
+          <Timer
+            handleSetTimer={this.handleSetTimer}
+            timer={this.state.timer}
+            soundPlaying={this.state.soundPlaying}
+          />
+        </footer>
       </>
     );
   }
