@@ -16,12 +16,11 @@ class LearnRoute extends Component {
 
   render() {
     return (
-      <section>
+      <section className="container">
         <Header />
         <h2>Turn On, Tune In, Drop Out</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <p className="tagline">
+        Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness
         </p>
         <Learn />
       </section>
