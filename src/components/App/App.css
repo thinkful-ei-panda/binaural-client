@@ -1,11 +1,11 @@
-a {
+/* a {
   text-decoration: none;
 }
-/* .App {
+.App {
   padding: 20px;
   margin: auto;
   justify-content: center;
-} */
+} 
 img {
   width: 100%;
   height: auto;
@@ -17,12 +17,12 @@ img {
   color: #f2f2f2;
   line-height: 18px;
   align-content: space-between;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: start;
+  flex-direction: row;
 }
 
 @media only screen and (min-width: 769px) {
 
 }
 @media only screen and (min-width: 1025px) {
-}
+} */
