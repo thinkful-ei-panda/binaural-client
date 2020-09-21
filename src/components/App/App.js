@@ -5,7 +5,6 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
-import Admin from '../../components/Admin/Admin';
 import PlayerRoute from '../../routes/PlayerRoute/PlayerRoute';
 import LearnRoute from '../../routes/LearnRoute/LearnRoute';
 import ChangePasswordRoute from '../../routes/ChangePasswordRoute/ChangePasswordRoute';
@@ -47,11 +46,10 @@ export default class App extends Component {
 							path="/learn"
 							component={
 								TokenService.hasAuthToken() && this.context.user.admin === true
-									? Admin
+									? AdminRoute
 									: LearnRoute
 							}
 						/>
-
 						<Route path={'/admin'} component={AdminRoute} />
 
 						{/* <Route path={"/learn"} component={LearnRoute} /> */}
