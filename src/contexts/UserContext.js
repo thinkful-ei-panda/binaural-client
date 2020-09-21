@@ -20,6 +20,7 @@ const UserContext = React.createContext({
 export default UserContext;
 
 export class UserProvider extends Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props);
     const state = { user: {}, admin: false, error: null };
