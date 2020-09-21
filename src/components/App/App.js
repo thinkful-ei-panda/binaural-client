@@ -5,6 +5,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
+import AdminRoute from '../../components/Admin/Admin';
 import PlayerRoute from '../../routes/PlayerRoute/PlayerRoute';
 import LearnRoute from '../../routes/LearnRoute/LearnRoute';
 import ChangePasswordRoute from '../../routes/ChangePasswordRoute/ChangePasswordRoute';
