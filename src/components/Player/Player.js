@@ -9,6 +9,8 @@ import WaveChips from "../WaveChips/WaveChips";
 //import WaveSplash from "../WaveSplash/WaveSplash";
 import UserContext from "../../contexts/UserContext";
 import "./Player.css";
+import UserApiService from "../../services/user-api-service";
+import TokenService from "../../services/token-service";
 
 class Player extends Component {
   static contextType = UserContext;
@@ -24,7 +26,20 @@ class Player extends Component {
     oscillators: [],
     timer: null,
     timerInterval: null,
-  };
+
+    user:null,
+  };  
+
+  async componentDidMount(){    
+    const {id} = await TokenService.parseAuthToken()
+    const user = await UserApiService.getUser(id)
+    console.log(user)
+    if(user.user_prefs.length > 0) {
+      this.setState({activeChip:user.user_prefs,user:user},console.log(this.state.user))
+    } else {
+      this.setState({user:user},() => console.log(this.state.user))
+    }
+  }
 
   handleChipChange = async (chip) => {
     switch (chip) {
@@ -48,8 +63,10 @@ class Player extends Component {
     }
   };
 
-  handlePlayTone = (e) => {
+  handlePlayTone = async (e) => {
     e.preventDefault();
+
+    await UserApiService.updateUserPassword(this.state.user.id,{user_prefs:this.state.activeChip})
 
     let ctx = new (window.AudioContext || window.webkitAudioContext)();
 
