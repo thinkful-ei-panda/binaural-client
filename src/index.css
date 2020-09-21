@@ -13,10 +13,6 @@
   font-style: normal;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 /* body */
 body {
 	height: 100vh;
@@ -30,6 +26,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #010612 100%) fixed center center / cover no-repeat;
+}
+
+* {
+	box-sizing: border-box;
 }
 
 /* header fonts */
@@ -55,14 +55,33 @@ h3 {
   color: #E0FEFF;
 }
 
+.delta h3 {
+  color: #80d8ff;
+}
+
+.theta h3 {
+  color: #82b1ff;
+}
+
+.alpha h3 {
+  color: #8c9eff;
+}
+
+.beta h3 {
+  color: #b388ff;
+}
+
+.gamma h3 {
+  color: #ea80fc;
+}
+
 /* misc text */
 .tagline {
   margin-top:-15px;
 }
 
-.delta {
-  font-family: 'Share Tech Mono', monospace;
-  color: #E0FEFF;
+a {
+  text-decoration: none;
 }
 
 /* containers */
@@ -78,17 +97,31 @@ h3 {
 	width: 100%;
 }
 
+.container-learn {
+	max-width: 100%;
+	margin: auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	width: 100%;
+}
+
 .container-2 {
 	max-width: 80%;
 	text-align: center;
 	display: flex;
 	flex-direction: row;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   align-content: space-between;
-	/* height: 100vh; */
   width: 100%;
   flex-wrap: wrap;
+}
+
+.wave-container {
+  margin-bottom: 30px;
 }
 
 .item {
@@ -99,6 +132,7 @@ h3 {
   justify-content: center;
   flex-direction: column;
   min-width:220px;
+  min-height: 325px;
 }
 
 /* buttons */
@@ -124,6 +158,12 @@ button:focus {
   flex-direction: column;
 }
 
+.button-container-2 {
+  display: flex;
+  flex-direction: column;
+  margin-top:15px;
+}
+
 /* forms */
 input {
   background-color: #010612;
@@ -137,6 +177,12 @@ input {
 
 input::placeholder {
   color: white;
+}
+
+/* imgs */
+img {
+  width: 100%;
+  height: auto;
 }
 
 /* star field */
@@ -212,6 +258,13 @@ input::placeholder {
 @media screen and (max-width: 600px) {
 	.container {
 		max-width: 90%;
+	}
+
+}
+
+@media screen and (min-width: 1400px) {
+	.container-learn {
+		height:100vh;
 	}
 
 }

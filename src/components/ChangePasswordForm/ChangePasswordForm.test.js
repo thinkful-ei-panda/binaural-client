@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import ChangePasswordForm from "./ChangePasswordForm";
 
-describe(`ChangePasswordForm Component`, () => {
-  describe(`Smoke test`, () => {
-    it(`Renders without crashing`, () => {
-      const div = document.createElement("div");
-      ReactDOM.render(
-        <BrowserRouter>
-          <ChangePasswordForm />
-        </BrowserRouter>,
-        div
-      );
-      ReactDOM.unmountComponentAtNode(div);
-    });
+
+configure({adapter: new Adapter()});
+describe('<Change Password Form />', () => {
+  it('renders without crashing', () => {
+    mount(
+      <BrowserRouter>
+        <ChangePasswordForm />
+      </BrowserRouter>,
+    );
   });
 });

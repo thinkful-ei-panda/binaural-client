@@ -16,7 +16,7 @@ class LearnRoute extends Component {
 
   render() {
     return (
-      <section className="container">
+      <section className="container-learn">
         <Header />
         <h2>Turn On, Tune In, Drop Out</h2>
         <p className="tagline">
