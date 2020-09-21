@@ -47,7 +47,7 @@ class ChangePasswordForm extends Component {
     const { error } = this.state;
     return (
       <form className="ChangePasswordForm" onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
+        <div className="alert" role="alert">{error && <p>{error}</p>}</div>
         <div>
           <Label htmlFor="change-password-input" hidden>
             Change Password

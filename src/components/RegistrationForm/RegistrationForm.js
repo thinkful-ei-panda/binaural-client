@@ -45,7 +45,7 @@ class RegistrationForm extends Component {
     const { error } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <div role="alert">{error && <p>{error}</p>}</div>
+        <div className="alert" role="alert">{error && <p>{error}</p>}</div>
         <div>
           <Label
             htmlFor="registration-name-input"
@@ -85,10 +85,10 @@ class RegistrationForm extends Component {
             required
           />
         </div>
-        <footer>
-          <Button type="submit">Sign up</Button>
+        <footer className="button-container">
+          <Button type="submit">Sign Up</Button>
           <Link to="/login">
-            <Button type="button">Login</Button>
+            <Button type="button">Log In</Button>
           </Link>
         </footer>
       </form>
