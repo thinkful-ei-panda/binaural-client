@@ -12,6 +12,7 @@ const UserContext = React.createContext({
 	setUser: () => {},
 	processLogin: () => {},
 	processLogout: () => {},
+	onPasswordChangeSuccess: () => {},
 });
 
 export default UserContext;
@@ -108,6 +109,21 @@ export class UserProvider extends Component {
 		this.context.processLogout();
 	};
 
+	onPasswordChangeSuccess = (authToken) => {
+		TokenService.saveAuthToken(authToken);
+		const jwtPayload = TokenService.parseAuthToken();
+		this.setUser({
+			id: jwtPayload.user_id,
+			name: jwtPayload.name,
+			email: jwtPayload.sub,
+			admin: jwtPayload.admin,
+		});
+		IdleService.registerIdleTimerResets();
+		TokenService.queueCallbackBeforeExpiry(() => {
+			this.fetchRefreshToken();
+		});
+	};
+
 	render() {
 		const value = {
 			user: this.state.user,
@@ -119,6 +135,7 @@ export class UserProvider extends Component {
 			processLogin: this.processLogin,
 			processLogout: this.processLogout,
 			handleLogoutClick: this.handleLogoutClick,
+			onPasswordChangeSuccess: this.onPasswordChangeSuccess,
 		};
 		return (
 			<UserContext.Provider value={value}>

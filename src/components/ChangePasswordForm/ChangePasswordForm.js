@@ -1,12 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Input, Label } from "../Form/Form";
 import UserApiService from "../../services/user-api-service";
 import UserContext from "../../contexts/UserContext";
+import TokenService from "../../services/token-service";
 import Button from "../Button/Button";
 import "../App/App.css";
 
-class ChangePasswordForm extends Component {
+export default class ChangePasswordForm extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      password: '',
+      error: null,
+      user_id: '',//TODO how to get the user id?
+    }
+    this.handlePassUpdate = this.handlePassUpdate.bind(this);
+  }
+
   static defaultProps = {
     onPasswordChangeSuccess: () => {},
   };
@@ -17,36 +29,39 @@ class ChangePasswordForm extends Component {
 
   firstInput = React.createRef();
 
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    const { password } = ev.target;
+  async handlePassUpdate(event) {
+    event.preventDefault();
+
+    const { password } = event.target;
+    const user_id = //TODO how to get the user id?
 
     this.setState({ error: null });
 
-    UserApiService.updateUser({
+   await UserApiService
+   .updateUserPassword(user_id, {
       password: password.value,
     })
       .then((res) => {
         password.value = "";
-        //TODO change processLogin to processChange function
-        this.context.processLogin(res.authToken);
-        //TODO change onLoginSuccess to an onChangeSuccess function
-        this.props.onLoginSuccess();
+        TokenService.saveAuthToken(res.authToken);
+        //this.context.onPasswordChangeSuccess(res.authToken)
+        this.props.onPasswordChangeSuccess();
+        this.props.history.push('/change');
       })
       .catch((res) => {
         this.setState({ error: res.error });
       });
   };
 
-  //TODO the .focus is breaking the page
-  componentDidMount() {
-    // this.firstInput.current.focus();
-  }
+  // componentDidMount() {
+  //   this.firstInput.current.focus();
+  // }
 
   render() {
     const { error } = this.state;
     return (
-      <form className="ChangePasswordForm" onSubmit={this.handleSubmit}>
+      <form className="ChangePasswordForm" onSubmit={this.handlePassUpdate}>
+        {/* DISPLAY OF THE FORM WITH THE PASSWORD FIELD TO BE UPDATED */}
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
           <Label htmlFor="change-password-input" hidden>
@@ -56,7 +71,8 @@ class ChangePasswordForm extends Component {
             id="change-password-input"
             name="password"
             type="password"
-            placeholder="new password"
+            placeholder="New Password"
+            onChange={this.handlePassUpdate}
             required
           />
         </div>
@@ -67,5 +83,3 @@ class ChangePasswordForm extends Component {
     );
   }
 }
-
-export default ChangePasswordForm;
