@@ -25,7 +25,7 @@ body {
   font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #010612 100%) fixed center center / cover no-repeat;
+  background: radial-gradient(#15202d 0%, #010612 100%) fixed center center / cover no-repeat;
 }
 
 * {
@@ -75,7 +75,7 @@ h3 {
   color: #ea80fc;
 }
 
-/* misc text */
+/* misc text & links */
 .tagline {
   margin-top:-15px;
 }
