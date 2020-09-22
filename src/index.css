@@ -26,6 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: radial-gradient(#15202d 0%, #010612 100%) fixed center center / cover no-repeat;
+  overflow-x: hidden;
 }
 
 * {
