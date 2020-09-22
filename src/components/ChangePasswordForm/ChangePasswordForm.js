@@ -17,7 +17,6 @@ export default class ChangePasswordForm extends Component {
 
 	state = { error: null };
 
-	//CHANGE THE FIELD FORMS
 	handlePassUpdate = (event) =>
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -47,7 +46,6 @@ export default class ChangePasswordForm extends Component {
 		const { error } = this.state;
 		return (
 			<form className="ChangePasswordForm" onSubmit={this.updatePassInfo}>
-				{/* DISPLAY OF THE FORM WITH THE PASSWORD FIELD TO BE UPDATED */}
 				<div role="alert">{error && <p>{error}</p>}</div>
 				<div>
 					<Label htmlFor="change-password-input" hidden>
@@ -62,9 +60,8 @@ export default class ChangePasswordForm extends Component {
 						required
 					/>
 				</div>
-				{/* <Link onClick={this.updatePassInfo} to="/login"> */}
+
 				<Button type="submit">Save Password</Button>
-				{/* </Link> */}
 			</form>
 		);
 	}
