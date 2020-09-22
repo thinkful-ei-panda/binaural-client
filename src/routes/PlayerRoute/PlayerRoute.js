@@ -38,10 +38,12 @@ class PlayerRoute extends Component {
           Binaural beats use the power of auditory illusion to help you achieve
           altered states of consciousness
         </p>
-        {this.renderLogoutLink()}
-        <Link to="/change">
-          <h2>Change Password</h2>
-        </Link>
+        <div>
+          <Link to="/change">
+            <p>Change Password</p>
+          </Link>
+          {this.renderLogoutLink()}
+        </div>
         <Player />
       </section>
     );

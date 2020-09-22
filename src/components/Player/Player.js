@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import Button from "../Button/Button";
 import "../App/App.css";
 import Timer from "../Timer/Timer";
-//import Visualizer from "../Visualizer/Visualizer";
+import AudioVisualizer from "../AudioVisualizer/AudioVisualizer";
 import WaveChips from "../WaveChips/WaveChips";
 //import WaveSplash from "../WaveSplash/WaveSplash";
 import UserContext from "../../contexts/UserContext";
@@ -18,7 +18,7 @@ class Player extends Component {
 
   state = {
     error: null,
-    beat: 4,
+    beat: 2,
     fundamental: 100,
     soundPlaying: false,
 
@@ -27,19 +27,22 @@ class Player extends Component {
     timer: null,
     timerInterval: null,
 
-    user:null,
-  };  
+    user: null,
+  };
 
-  async componentDidMount(){    
-    const {id} = await TokenService.parseAuthToken()
-    const user = await UserApiService.getUser(id)
-    console.log(user)
-    if(user.user_prefs.length > 0) {
-      this.setState({activeChip:user.user_prefs,user:user},console.log(this.state.user))
-    } else {
-      this.setState({user:user},() => console.log(this.state.user))
-    }
-  }
+  // async componentDidMount() {
+  //   const { id } = await TokenService.parseAuthToken();
+  //   const user = await UserApiService.getUser(id);
+  //   console.log(user);
+  //   if (user.user_prefs.length > 0) {
+  //     this.setState(
+  //       { activeChip: user.user_prefs, user: user },
+  //       console.log(this.state.user)
+  //     );
+  //   } else {
+  //     this.setState({ user: user }, () => console.log(this.state.user));
+  //   }
+  // }
 
   handleChipChange = async (chip) => {
     switch (chip) {
@@ -47,16 +50,16 @@ class Player extends Component {
         await this.setState({ beat: 2, activeChip: "Delta" });
         break;
       case "Theta":
-        await this.setState({ beat: 4, activeChip: "Theta" });
+        await this.setState({ beat: 5, activeChip: "Theta" });
         break;
       case "Alpha":
-        await this.setState({ beat: 8, activeChip: "Alpha" });
+        await this.setState({ beat: 10, activeChip: "Alpha" });
         break;
       case "Beta":
-        await this.setState({ beat: 12, activeChip: "Beta" });
+        await this.setState({ beat: 24, activeChip: "Beta" });
         break;
       case "Gamma":
-        await this.setState({ beat: 30, activeChip: "Gamma" });
+        await this.setState({ beat: 63, activeChip: "Gamma" });
         break;
       default:
         console.log(chip);
@@ -66,7 +69,9 @@ class Player extends Component {
   handlePlayTone = async (e) => {
     e.preventDefault();
 
-    await UserApiService.updateUserPassword(this.state.user.id,{user_prefs:this.state.activeChip})
+    // await UserApiService.updateUserPassword(this.state.user.id, {
+    //   user_prefs: this.state.activeChip,
+    // });
 
     let ctx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -112,7 +117,6 @@ class Player extends Component {
         1000
       );
       setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
-
     }
   };
 
@@ -153,12 +157,11 @@ class Player extends Component {
     const chips = ["Delta", "Theta", "Alpha", "Beta", "Gamma"];
     return (
       <>
-        {/* {this.state.soundPlaying ? (
-          <Visualizer beat={this.state.beat} />
-        ) : (
-          <WaveSplash activeChip={this.state.activeChip} />
-        )} */}
-
+        <AudioVisualizer
+          beat={this.state.beat}
+          wave={this.state.activeChip}
+          // onError= {<WaveSplash activeChip={this.state.activeChip}}
+        />
         <footer className="player">
           <div role="alert">{error && <p>{error}</p>}</div>
           <WaveChips
