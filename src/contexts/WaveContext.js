@@ -28,11 +28,11 @@ const WaveContext = React.createContext({
       lengthM: 80,
       lengthR: 50,
       colorL: "#b5ffff",
-      colorM: "rgb(128, 216, 255)",
-      colorR: "rgb(73, 167, 204)",
+      colorM: "#80d8ff",
+      colorR: "#49a7cc",
     },
     {
-      wave: "Theta", // 6Hz
+      wave: "Theta", // 5Hz
       beat: 3, // when doubled equals the binaural beat
       heightL: 30,
       heightM: 100,
@@ -40,7 +40,7 @@ const WaveContext = React.createContext({
       lengthL: 40,
       lengthM: 40,
       lengthR: 40,
-      colorL: " #b6e3ff",
+      colorL: "#b6e3ff",
       colorM: "#82b1ff",
       colorR: "#4d82cb",
     },

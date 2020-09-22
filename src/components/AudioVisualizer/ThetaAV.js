@@ -3,7 +3,7 @@ import WaveContext from "../../contexts/WaveContext";
 import SineWaves from "sine-waves";
 import $ from "jquery";
 
-class AudioVisualizer extends React.Component {
+class ThetaAV extends React.Component {
   static contextType = WaveContext;
   render() {
     // let { beat, wave } = this.props;
@@ -29,30 +29,30 @@ class AudioVisualizer extends React.Component {
         waves: [
           // Left wave
           {
-            timeModifier: 5 + 2, // BinauralBeat - 2
+            timeModifier: 3 + 2, // BinauralBeat - 2
             lineWidth: 3, // Don't change
-            amplitude: 40, // heightL
-            wavelength: 25, // lengthL
+            amplitude: 30, // heightL
+            wavelength: 40, // lengthL
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 0.3)", // Don't change
+            strokeStyle: "#b6e3ff", // Don't change
           },
           // Middle wave
           {
-            timeModifier: 5 * 2, // BinauralBeat
+            timeModifier: 3, // BinauralBeat
             lineWidth: 5, // Don't change
             amplitude: 100, // heightM
-            wavelength: 25, // lengthM
+            wavelength: 40, // lengthM
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 1)", // Don't change
+            strokeStyle: "#82b1ff", // Don't change
           },
           // Right wave
           {
-            timeModifier: 5 - 2, // BinauralBeat + 2
+            timeModifier: 3 - 2, // BinauralBeat + 2
             lineWidth: 1, // Don't change
             amplitude: 60, // heightR
-            wavelength: 25, // lengthR
+            wavelength: 40, // lengthR
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 0.5)", // Don't change
+            strokeStyle: "#4d82cb", // Don't change
           },
         ],
 
@@ -98,4 +98,4 @@ class AudioVisualizer extends React.Component {
   }
 }
 
-export default AudioVisualizer;
+export default ThetaAV;

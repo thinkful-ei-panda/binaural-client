@@ -1,13 +1,9 @@
 import React from "react";
-import WaveContext from "../../contexts/WaveContext";
 import SineWaves from "sine-waves";
 import $ from "jquery";
 
-class AudioVisualizer extends React.Component {
-  static contextType = WaveContext;
+class DeltaAV extends React.Component {
   render() {
-    // let { beat, wave } = this.props;
-
     $(function () {
       var waves = new SineWaves({
         el: document.getElementById("waves"),
@@ -29,30 +25,30 @@ class AudioVisualizer extends React.Component {
         waves: [
           // Left wave
           {
-            timeModifier: 5 + 2, // BinauralBeat - 2
+            timeModifier: 1, // BinauralBeat - 2
             lineWidth: 3, // Don't change
-            amplitude: 40, // heightL
-            wavelength: 25, // lengthL
+            amplitude: 30, // heightL
+            wavelength: 40, // lengthL
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 0.3)", // Don't change
+            strokeStyle: "#b5ffff", // Don't change
           },
           // Middle wave
           {
-            timeModifier: 5 * 2, // BinauralBeat
+            timeModifier: 1, // BinauralBeat
             lineWidth: 5, // Don't change
             amplitude: 100, // heightM
-            wavelength: 25, // lengthM
+            wavelength: 80, // lengthM
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 1)", // Don't change
+            strokeStyle: "#80d8ff", // Don't change
           },
           // Right wave
           {
-            timeModifier: 5 - 2, // BinauralBeat + 2
+            timeModifier: 1, // BinauralBeat + 2
             lineWidth: 1, // Don't change
             amplitude: 60, // heightR
-            wavelength: 25, // lengthR
+            wavelength: 50, // lengthR
             segmentLength: 1, // Don't change
-            strokeStyle: "rgba(255, 255, 255, 0.5)", // Don't change
+            strokeStyle: "#49a7cc", // Don't change
           },
         ],
 
@@ -63,9 +59,9 @@ class AudioVisualizer extends React.Component {
           //   var gradient1 = this.ctx.createLinearGradient(0, 0, this.width, 0);
           //   var gradient2 = this.ctx.createLinearGradient(0, 0, this.width, 0);
           // Left wave
-          //   gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-          //   gradient.addColorStop(0.5, "rgb(140, 158, 255)"); // colorL
-          //   gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+          // gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
+          // gradient.addColorStop(0.5, "rgb(140, 158, 255)"); // colorL
+          // gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
           // Middle wave (Binaural Beat)
           //   gradient1.addColorStop(0, "rgba(0, 0, 0, 0)");
           //   gradient1.addColorStop(0.5, "rgb(234, 128, 252)"); // colorM
@@ -74,15 +70,14 @@ class AudioVisualizer extends React.Component {
           //   gradient2.addColorStop(0, "rgba(0, 0, 0, 0)");
           //   gradient2.addColorStop(0.5, "rgb(182, 79, 200)"); // colorR
           //   gradient2.addColorStop(1, "rgba(0, 0, 0, 0)");
-
-          var index = -1;
-          var length = this.waves.length;
+          //   var index = -1;
+          //   var length = this.waves.length;
           //   while (++index < length) {
           //     this.waves[index].strokeStyle = gradient;
           //   }
           //   // Clean Up
-          index = void 0;
-          length = void 0;
+          //   index = void 0;
+          //   length = void 0;
           //   gradient = void 0;
         },
       });
@@ -98,4 +93,4 @@ class AudioVisualizer extends React.Component {
   }
 }
 
-export default AudioVisualizer;
+export default DeltaAV;
