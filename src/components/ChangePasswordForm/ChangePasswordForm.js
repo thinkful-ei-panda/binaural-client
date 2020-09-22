@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Input, Label } from '../Form/Form';
 import UserApiService from '../../services/user-api-service';
 import Button from '../Button/Button';
-import '../App/App.css';
 import UserContext from '../../contexts/UserContext';
 
 export default class ChangePasswordForm extends Component {

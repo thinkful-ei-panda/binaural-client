@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import "../App/App.css";
 import UserContext from '../../contexts/UserContext'
 
 class Welcome extends Component {

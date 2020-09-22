@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // import { Input, Required, Label } from "../Form/Form";
 // import UserApiService from "../../services/user-api-service";
 // import Button from "../Button/Button";
-import "../App/App.css";
 import Timer from "../Timer/Timer";
 //import Visualizer from "../Visualizer/Visualizer";
 import WaveChips from "../WaveChips/WaveChips";
