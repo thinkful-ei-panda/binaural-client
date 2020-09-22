@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import ChangePasswordForm from '../../components/ChangePasswordForm/ChangePasswordForm';
+import Header from '../../components/Header/Header';
 
 class ChangePasswordRoute extends Component {
 	static defaultProps = {
@@ -39,6 +40,7 @@ class ChangePasswordRoute extends Component {
 	render() {
 		return (
 			<section>
+				<Header />
 				<p>
 					Binaural beats use the power of auditory illusion to help you achieve
 					altered states of consciousness
