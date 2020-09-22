@@ -33,11 +33,10 @@ class Player extends Component {
   async componentDidMount(){    
     const {id} = await TokenService.parseAuthToken()
     const user = await UserApiService.getUser(id)
-    console.log(user)
     if(user.user_prefs.length > 0) {
-      this.setState({activeChip:user.user_prefs,user:user},console.log(this.state.user))
+      this.setState({activeChip:user.user_prefs,user:user})
     } else {
-      this.setState({user:user},() => console.log(this.state.user))
+      this.setState({user:user})
     }
   }
 

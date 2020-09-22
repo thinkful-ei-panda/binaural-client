@@ -50,11 +50,11 @@ export default class App extends Component {
 									: LearnRoute
 							}
 						/>
-						<Route path={'/admin'} component={AdminRoute} />
+						<PrivateRoute path={'/admin'} component={AdminRoute} />
 
 						{/* <Route path={"/learn"} component={LearnRoute} /> */}
 
-						<Route path={'/player'} component={PlayerRoute} />
+						<PrivateRoute path={'/player'} component={PlayerRoute} />
 						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
 						<Route component={NotFoundRoute} />
 					</Switch>
