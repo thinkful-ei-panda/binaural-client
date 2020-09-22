@@ -1,4 +1,4 @@
-# Binaural Beats by Rebecca Hudson/Oluwaseyi Ariyo/Wesley Rou/Karsten Taylor/Joshua Struve/Renata Dickinson
+# Binaural
 
 Live App:
 
@@ -22,7 +22,7 @@ Learn more about the app
 
 ![Learn Page](./screenshots/learnpage.PNG "Learn Page")
 
-### Player Page
+### Audio Visualizer
 
 ![Player](./screenshots/player.PNG "Player")
 
