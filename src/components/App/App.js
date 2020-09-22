@@ -50,9 +50,17 @@ export default class App extends Component {
 									: LearnRoute
 							}
 						/>
+<<<<<<< HEAD
 						{/* <Route path={'/admin'} component={AdminRoute} /> */}
 						<Route path={'/player'} component={PlayerRoute} />
 						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
+=======
+						<PrivateRoute path={'/admin'} component={AdminRoute} />
+
+						{/* <Route path={"/learn"} component={LearnRoute} /> */}
+						<PrivateRoute path={'/player'} component={PlayerRoute} />
+						<PrivateRoute path={'/change'} component={ChangePasswordRoute} />
+>>>>>>> e0ee5bcc65ffeb919ea2fda0f860a768bae8172b
 						<Route component={NotFoundRoute} />
 					</Switch>
 				</main>
