@@ -11,7 +11,6 @@ import LearnRoute from '../../routes/LearnRoute/LearnRoute';
 import ChangePasswordRoute from '../../routes/ChangePasswordRoute/ChangePasswordRoute';
 import WelcomeRoute from '../../routes/WelcomeRoute/WelcomeRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
-import AdminRoute from '../../routes/AdminRoute/AdminRoute';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import '../../index.css';
@@ -51,10 +50,7 @@ export default class App extends Component {
 									: LearnRoute
 							}
 						/>
-						<Route path={'/admin'} component={AdminRoute} />
-
-						{/* <Route path={"/learn"} component={LearnRoute} /> */}
-
+						{/* <Route path={'/admin'} component={AdminRoute} /> */}
 						<Route path={'/player'} component={PlayerRoute} />
 						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
 						<Route component={NotFoundRoute} />
