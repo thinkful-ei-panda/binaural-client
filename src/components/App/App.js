@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
@@ -40,7 +39,6 @@ export default class App extends Component {
 						<Route exact path={'/'} component={WelcomeRoute} />
 						<PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
 						<PublicOnlyRoute path={'/login'} component={LoginRoute} />
-						{/* <Route path={'/learn'} component={LearnRoute} /> */}
 						<Route
 							exact
 							path="/learn"
@@ -51,8 +49,6 @@ export default class App extends Component {
 							}
 						/>
 						<PrivateRoute path={'/admin'} component={AdminRoute} />
-
-						{/* <Route path={"/learn"} component={LearnRoute} /> */}
 						<PrivateRoute path={'/player'} component={PlayerRoute} />
 						<PrivateRoute path={'/change'} component={ChangePasswordRoute} />
 						<Route component={NotFoundRoute} />
