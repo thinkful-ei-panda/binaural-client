@@ -21,18 +21,7 @@ class LoginRoute extends Component {
 			: history.push('/learn');
 	};
 
-	// handleAdminLogin = () => {
-	// 	const { history } = this.props;
-	// 	history.push('/admin');
-	// };
-	// handleUserLogin = () => {
-	// 	const { history } = this.props;
-	// 	history.push('/learn');
-	// };
-
 	render() {
-		const { user } = this.context;
-
 		return (
 			<section className="container">
 				<Header />

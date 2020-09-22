@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
-//import Admin from '../../components/Admin/Admin';
 import Button from '../../components/Button/Button';
 import UserApiService from '../../services/user-api-service';
 import UserInfo from '../../components/Admin/UserInfo';
-import TokenService from '../../services/token-service';
 
 class AdminRoute extends Component {
 	static defaultProps = {
@@ -65,10 +62,7 @@ class AdminRoute extends Component {
 							this.renderUsersList()
 						)}
 					</ul>
-
-					{/* {this.renderLogoutLink()} */}
 				</div>
-				{/* <Admin /> */}
 			</section>
 		);
 	}
