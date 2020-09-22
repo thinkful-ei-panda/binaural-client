@@ -27,18 +27,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: radial-gradient(#15202d 0%, #010612 100%) fixed center center / cover no-repeat;
-=======
-	margin: 0;
-	padding: 0;
-	color: white;
-	text-align: center;
-	font-family: 'Roboto', sans-serif;
-	font-size: 1rem;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	background: radial-gradient(ellipse at bottom, #1b2735 0%, #010612 100%) fixed
-		center center / cover no-repeat;
->>>>>>> a09eda2cfb3da457f442186ef057e1709a229055
 }
 
 * {
