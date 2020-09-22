@@ -12,15 +12,16 @@ const UserApiService = {
 			!res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
 		);
 	},
-	// getUser() {
-	//   return fetch(`${config.API_ENDPOINT}/api/admin/:id`, {
-	//     headers: {
-	//       Authorization: `Bearer ${TokenService.getAuthToken()}`,
-	//     },
-	//   }).then((res) =>
-	//     !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-	//   );
-	// },
+
+	getUser(id) {
+	  return fetch(`${config.API_ENDPOINT}/api/user/${id}`, {
+	    headers: {
+	      Authorization: `Bearer ${TokenService.getAuthToken()}`,
+	    },
+	  }).then((res) =>
+	    !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+	  );
+	},
 
 	//REGISTER NEW USER
 	postUser(user) {

@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
-import AdminRoute from '../../components/Admin/Admin';
+import AdminRoute from '../../routes/AdminRoute/AdminRoute';
 import PlayerRoute from '../../routes/PlayerRoute/PlayerRoute';
 import LearnRoute from '../../routes/LearnRoute/LearnRoute';
 import ChangePasswordRoute from '../../routes/ChangePasswordRoute/ChangePasswordRoute';
 import WelcomeRoute from '../../routes/WelcomeRoute/WelcomeRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
-// import AdminRoute from '../../routes/AdminRoute/AdminRoute';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import '../../index.css';
@@ -41,7 +39,6 @@ export default class App extends Component {
 						<Route exact path={'/'} component={WelcomeRoute} />
 						<PublicOnlyRoute path={'/register'} component={RegistrationRoute} />
 						<PublicOnlyRoute path={'/login'} component={LoginRoute} />
-						{/* <Route path={'/learn'} component={LearnRoute} /> */}
 						<Route
 							exact
 							path="/learn"
@@ -51,12 +48,9 @@ export default class App extends Component {
 									: LearnRoute
 							}
 						/>
-						<Route path={'/admin'} component={AdminRoute} />
-
-						{/* <Route path={"/learn"} component={LearnRoute} /> */}
-
-						<Route path={'/player'} component={PlayerRoute} />
-						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
+						<PrivateRoute path={'/admin'} component={AdminRoute} />
+						<PrivateRoute path={'/player'} component={PlayerRoute} />
+						<PrivateRoute path={'/change'} component={ChangePasswordRoute} />
 						<Route component={NotFoundRoute} />
 					</Switch>
 				</main>
