@@ -2,65 +2,59 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Input, Label } from "../Form/Form";
 import UserApiService from "../../services/user-api-service";
-import UserContext from "../../contexts/UserContext";
-import TokenService from "../../services/token-service";
+//import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
 import "../App/App.css";
 
 export default class ChangePasswordForm extends React.Component {
-  constructor(props){
-    super(props);
+    constructor(props){
+      super(props);
 
-    this.state = {
-      password: '',
-      error: null,
-      user_id: '',//TODO how to get the user id?
-    }
-    this.handlePassUpdate = this.handlePassUpdate.bind(this);
-  }
-
-  static defaultProps = {
-    onPasswordChangeSuccess: () => {},
+      this.state ={
+          password: '',
+          error: null,
+          user_id: 11, //TODO CHANGE THE user_id
+      }
+      this.updatePassInfo = this.updatePassInfo.bind(this);
   };
 
-  static contextType = UserContext;
+  //CHANGE THE FIELD FORMS 
+  handlePassUpdate = (event) =>
+  this.setState({
+    [event.target.name]: event.target.value,
+  });
 
-  state = { error: null };
+  //FUNCTION THAT TALKS TO THE API TO UPDATE THE USER PASS
+  async updatePassInfo(event){
+      event.preventDefault();
 
-  firstInput = React.createRef();
-
-  async handlePassUpdate(event) {
-    event.preventDefault();
-
-    const { password } = event.target;
-    const user_id = //TODO how to get the user id?
-
-    this.setState({ error: null });
-
-   await UserApiService
-   .updateUserPassword(user_id, {
-      password: password.value,
-    })
-      .then((res) => {
-        password.value = "";
-        TokenService.saveAuthToken(res.authToken);
-        //this.context.onPasswordChangeSuccess(res.authToken)
-        this.props.onPasswordChangeSuccess();
-        this.props.history.push('/change');
+      const user_id = this.state.user_id;
+      
+      const myPass = await UserApiService
+      .updateUserPassword(user_id, {
+          password: this.state.password,
       })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
+
+      if(myPass.error !== undefined){
+          this.setState({ error: myPass.error});      
+      }
+      else{
+          this.props.history.push('/logout');
+      }
   };
 
-  // componentDidMount() {
-  //   this.firstInput.current.focus();
-  // }
+    handleLogoutClick = () => {
+		this.context.processLogout();
+		const { location, history } = this.props;
+		const destination = (location.state || {}).from || '/login';
+		history.push(destination);
+  };
+
 
   render() {
     const { error } = this.state;
     return (
-      <form className="ChangePasswordForm" onSubmit={this.handlePassUpdate}>
+      <form className="ChangePasswordForm" onSubmit={this.updatePassInfo}>
         {/* DISPLAY OF THE FORM WITH THE PASSWORD FIELD TO BE UPDATED */}
         <div role="alert">{error && <p>{error}</p>}</div>
         <div>
@@ -76,7 +70,7 @@ export default class ChangePasswordForm extends React.Component {
             required
           />
         </div>
-        <Link onClick={this.context.handleLogoutClick} to="/login">
+        <Link onClick={this.updatePassInfo} to="/login">
           <Button type="submit">Save Password</Button>
         </Link>
       </form>
