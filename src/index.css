@@ -42,10 +42,6 @@ h1 {
 	font-weight: 100;
 }
 
-h1 a {
-	color: #e0feff;
-}
-
 h2 {
 	font-family: 'Share Tech Mono', monospace;
 	color: #e0feff;
@@ -76,13 +72,38 @@ h3 {
   color: #ea80fc;
 }
 
-/* misc text & links */
-.tagline {
-	margin-top: -15px;
+/* links */
+a:link {
+  color: #e0feff;
+}
+
+a:visited {
+  color: #e0feff;
+}
+
+a:hover {
+  color: #aecbcc;
+}
+
+a:active {
+  color: #aecbcc;
 }
 
 a {
   text-decoration: none;
+}
+
+h1 a {
+	color: #e0feff;
+}
+
+h1 a:hover {
+	color: #e0feff;
+}
+
+/* misc text */
+.tagline {
+	margin-top: -15px;
 }
 
 /* containers */
@@ -185,6 +206,28 @@ input::placeholder {
 img {
   width: 100%;
   height: auto;
+}
+
+/* list styles */
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1000px;
+  min-width: 800px;
+  border-bottom: 1px solid #e0feff;
+  align-items: center;
+  margin-bottom:15px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  width:100vw;
+  margin: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-x: scroll;
 }
 
 /* star field */

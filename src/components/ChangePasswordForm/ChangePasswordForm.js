@@ -55,13 +55,13 @@ export default class ChangePasswordForm extends Component {
 						id="change-password-input"
 						name="password"
 						type="password"
-						placeholder="New Password"
+						placeholder="new password"
 						onChange={this.handlePassUpdate}
 						required
 					/>
 				</div>
 
-				<Button type="submit">Save Password</Button>
+				<Button type="submit">Save</Button>
 			</form>
 		);
 	}
