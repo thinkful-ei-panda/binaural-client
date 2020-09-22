@@ -11,23 +11,22 @@ import LearnRoute from '../../routes/LearnRoute/LearnRoute';
 import ChangePasswordRoute from '../../routes/ChangePasswordRoute/ChangePasswordRoute';
 import WelcomeRoute from '../../routes/WelcomeRoute/WelcomeRoute';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
+import AdminRoute from '../../routes/AdminRoute/AdminRoute';
 import TokenService from '../../services/token-service';
 import UserContext from '../../contexts/UserContext';
 import '../../index.css';
 
-
 export default class App extends Component {
-  state = {
-    hasError: false,
-  };
+	state = {
+		hasError: false,
+	};
 
-  static contextType = UserContext;
+	static contextType = UserContext;
 
-  static getDerivedStateFromError(error) {
-    console.error(error);
-    return { hasError: true };
-  }
-
+	static getDerivedStateFromError(error) {
+		console.error(error);
+		return { hasError: true };
+	}
 
 	render() {
 		const { hasError } = this.state;
@@ -52,17 +51,16 @@ export default class App extends Component {
 									: LearnRoute
 							}
 						/>
+						<Route path={'/admin'} component={AdminRoute} />
 
-            <Route path={"/admin"} component={AdminRoute} />
+						{/* <Route path={"/learn"} component={LearnRoute} /> */}
 
-            {/* <Route path={"/learn"} component={LearnRoute} /> */}
-
-            <Route path={"/player"} component={PlayerRoute} />
-            {/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
-            <Route component={NotFoundRoute} />
-          </Switch>
-        </main>
-      </div>
-    );
-  }
+						<Route path={'/player'} component={PlayerRoute} />
+						{/* <PrivateRoute path={'/change'} component={ChangePasswordRoute} /> */}
+						<Route component={NotFoundRoute} />
+					</Switch>
+				</main>
+			</div>
+		);
+	}
 }
