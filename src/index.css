@@ -17,7 +17,6 @@
 body {
 	height: 100vh;
 	width: 100%;
-<<<<<<< HEAD
   margin: 0;
   padding: 0;
   color: white;
@@ -132,7 +131,8 @@ a {
   color: #f2f2f2;
   justify-content: center;
   flex-direction: column;
-  min-width:220px;
+  min-width:240px;
+  max-width: 240px;
   min-height: 325px;
 }
 
@@ -824,7 +824,12 @@ img {
 @media screen and (max-width: 600px) {
 	.container {
 		max-width: 90%;
-	}
+  }
+  
+  .item {
+    min-width:240px;
+    max-width: 100%;
+  }
 
 }
 
