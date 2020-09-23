@@ -22,7 +22,7 @@ Learn more about the app
 
 ![Learn Page](./screenshots/learnpage.PNG "Learn Page")
 
-### Audio Visualizer
+### Binaural Beat Player & Audio Visualizer
 
 ![Player](./screenshots/player.PNG "Player")
 
