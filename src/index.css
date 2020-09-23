@@ -157,6 +157,7 @@ h1 a:hover {
   min-width:240px;
   max-width: 240px;
   min-height: 325px;
+  border-bottom: 1px solid #e0feff;
 }
 
 /* buttons */
