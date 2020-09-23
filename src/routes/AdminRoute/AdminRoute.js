@@ -6,43 +6,43 @@ import UserInfo from '../../components/Admin/UserInfo';
 import Header from '../../components/Header/Header';
 
 class AdminRoute extends Component {
-	static defaultProps = {
-		location: {},
-		history: {
-			push: () => {},
-		},
-	};
+  static defaultProps = {
+    location: {},
+    history: {
+      push: () => {},
+    },
+  };
 
-	static contextType = UserContext;
+  static contextType = UserContext;
 
-	componentDidMount() {
-		this.context.clearError();
-		UserApiService.getUsers()
-			.then(this.context.setUsersList)
-			.catch(this.context.setError);
-	}
+  componentDidMount() {
+    this.context.clearError();
+    UserApiService.getUsers()
+      .then(this.context.setUsersList)
+      .catch(this.context.setError);
+  }
 
-	handleDeleteUser = () => {
-		this.componentDidMount();
-	};
+  handleDeleteUser = () => {
+    this.componentDidMount();
+  };
 
-	handleLogoutClick = (e) => {
-		this.context.processLogout();
-		const { location, history } = this.props;
-		const destination = (location.state || {}).from || '/login';
-		history.push(destination);
-	};
+  handleLogoutClick = (e) => {
+    this.context.processLogout();
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || "/login";
+    history.push(destination);
+  };
 
-	renderUsersList() {
-		const { users = [] } = this.context;
-		return users.map((user) => (
-			<UserInfo
-				key={user.id}
-				user={user}
-				onDeleteUser={this.handleDeleteUser}
-			/>
-		));
-	}
+  renderUsersList() {
+    const { users = [] } = this.context;
+    return users.map((user) => (
+      <UserInfo
+        key={user.id}
+        user={user}
+        onDeleteUser={this.handleDeleteUser}
+      />
+    ));
+  }
 
 	render() {
 		const { error } = this.context;

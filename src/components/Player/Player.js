@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-// import { Input, Required, Label } from "../Form/Form";
-// import UserApiService from "../../services/user-api-service";
-// import Button from "../Button/Button";
 import Timer from "../Timer/Timer";
-//import Visualizer from "../Visualizer/Visualizer";
+import AudioVisualizer from "../AudioVisualizer/AudioVisualizer";
+import DefaultAV from "../AudioVisualizer/DefaultAV";
 import WaveChips from "../WaveChips/WaveChips";
-//import WaveSplash from "../WaveSplash/WaveSplash";
 import UserContext from "../../contexts/UserContext";
 import "./Player.css";
 import UserApiService from "../../services/user-api-service";
@@ -17,7 +14,7 @@ class Player extends Component {
 
   state = {
     error: null,
-    beat: 4,
+    beat: 2,
     fundamental: 100,
     soundPlaying: false,
 
@@ -26,8 +23,9 @@ class Player extends Component {
     timer: null,
     timerInterval: null,
 
-    user:null,
-  };  
+    user: null,
+  };
+
 
   async componentDidMount(){    
     const {id} = await TokenService.parseAuthToken()
@@ -45,16 +43,16 @@ class Player extends Component {
         await this.setState({ beat: 2, activeChip: "Delta" });
         break;
       case "Theta":
-        await this.setState({ beat: 4, activeChip: "Theta" });
+        await this.setState({ beat: 5, activeChip: "Theta" });
         break;
       case "Alpha":
-        await this.setState({ beat: 8, activeChip: "Alpha" });
+        await this.setState({ beat: 10, activeChip: "Alpha" });
         break;
       case "Beta":
-        await this.setState({ beat: 12, activeChip: "Beta" });
+        await this.setState({ beat: 24, activeChip: "Beta" });
         break;
       case "Gamma":
-        await this.setState({ beat: 30, activeChip: "Gamma" });
+        await this.setState({ beat: 63, activeChip: "Gamma" });
         break;
       default:
         console.log(chip);
@@ -64,12 +62,11 @@ class Player extends Component {
   handlePlayTone = async (e) => {
     e.preventDefault();
 
-    await UserApiService.updateUserPassword(this.state.user.id,{user_prefs:this.state.activeChip})
+     await UserApiService.updateUserPassword(this.state.user.id, {
+      user_prefs: this.state.activeChip,
+    });
 
     let ctx = new (window.AudioContext || window.webkitAudioContext)();
-
-    // let b = parseInt(e.target.Beat.value); // beat in Hz
-    // let f = parseInt(e.target.Fundamentals.value); // fundamental frequency
 
     let b = this.state.beat;
     let f = this.state.fundamental;
@@ -94,7 +91,7 @@ class Player extends Component {
       } else {
         o.frequency.value = f + 0;
       }
-      // o.start();
+ 
       o.connect(panNodes[pan]);
       oscillators.push(o);
     }
@@ -110,7 +107,6 @@ class Player extends Component {
         1000
       );
       setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
-
     }
   };
 
@@ -121,8 +117,8 @@ class Player extends Component {
 
   //stops tone when stop is clicked or when timer runs out
   handleStopTone = () => {
-    this.state.oscillators[0].stop();
-    this.state.oscillators[1].stop();
+    this.state.oscillators[0].stop(2);
+    this.state.oscillators[1].stop(2);
     clearInterval(this.soundTimerInterval);
     if (this.state.timer === 0) {
       this.setState({ soundPlaying: false, timer: null });
@@ -151,12 +147,11 @@ class Player extends Component {
     const chips = ["Delta", "Theta", "Alpha", "Beta", "Gamma"];
     return (
       <>
-        {/* {this.state.soundPlaying ? (
-          <Visualizer beat={this.state.beat} />
+        {this.state.soundPlaying ? (
+          <AudioVisualizer activeChip={this.state.activeChip} />
         ) : (
-          <WaveSplash activeChip={this.state.activeChip} />
-        )} */}
-
+          <DefaultAV />
+        )}
         <footer className="player">
           <div role="alert">{error && <p>{error}</p>}</div>
           <WaveChips
