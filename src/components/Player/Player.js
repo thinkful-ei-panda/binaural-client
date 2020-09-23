@@ -4,7 +4,6 @@ import AudioVisualizer from "../AudioVisualizer/AudioVisualizer";
 import DefaultAV from "../AudioVisualizer/DefaultAV";
 import WaveChips from "../WaveChips/WaveChips";
 import UserContext from "../../contexts/UserContext";
-import "./Player.css";
 import UserApiService from "../../services/user-api-service";
 import TokenService from "../../services/token-service";
 
