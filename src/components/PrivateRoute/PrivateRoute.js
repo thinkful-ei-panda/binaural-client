@@ -4,14 +4,15 @@ import UserContext from '../../contexts/UserContext'
 
 export default function PrivateRoute({ component, ...props }) {
   const Component = component
+  
   return (
     <Route
       {...props}
       render={componentProps => (
         <UserContext.Consumer>
-          {userContext =>
+          {userContext => 
             !!userContext.user.id
-              ? <Component {...componentProps} />
+              ? <Component {...componentProps} />              
               : (
                 <Redirect
                   to={{

@@ -5,6 +5,7 @@ import IdleService from "../services/idle-service";
 
 const UserContext = React.createContext({
   users: [],
+  user: {},
   admin: false,
   error: null,
   create_date: "",
@@ -28,7 +29,7 @@ export class UserProvider extends Component {
 
     if (jwtPayload)
       state.user = {
-        id: jwtPayload.user_id,
+        id: jwtPayload.id,
         name: jwtPayload.name,
         email: jwtPayload.sub,
         admin: jwtPayload.admin,
@@ -79,9 +80,9 @@ export class UserProvider extends Component {
 
   processLogin = (authToken) => {
     TokenService.saveAuthToken(authToken);
-    const jwtPayload = TokenService.parseAuthToken();
+    const jwtPayload = TokenService.parseAuthToken();    
     this.setUser({
-      id: jwtPayload.user_id,
+      id: jwtPayload.id,
       name: jwtPayload.name,
       email: jwtPayload.sub,
       admin: jwtPayload.admin,

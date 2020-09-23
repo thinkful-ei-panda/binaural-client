@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-// import { Link } from 'react-router-dom';
-import UserContext from "../../contexts/UserContext";
-//import Admin from '../../components/Admin/Admin';
-import Button from "../../components/Button/Button";
-import UserApiService from "../../services/user-api-service";
-import UserInfo from "../../components/Admin/UserInfo";
-// import TokenService from '../../services/token-service';
+import React, { Component } from 'react';
+import UserContext from '../../contexts/UserContext';
+import Button from '../../components/Button/Button';
+import UserApiService from '../../services/user-api-service';
+import UserInfo from '../../components/Admin/UserInfo';
+import Header from '../../components/Header/Header';
 
 class AdminRoute extends Component {
   static defaultProps = {
@@ -46,32 +44,30 @@ class AdminRoute extends Component {
     ));
   }
 
-  render() {
-    const { error } = this.context;
-    return (
-      <section>
-        <div>
-          <p>Logged in as {this.context.user.name}</p>
-          <Button id="logout" type="onClick" onClick={this.handleLogoutClick}>
-            Log Out
-          </Button>
-        </div>
-        <div>
-          <h2>Admin</h2>
-          <ul>
-            {error ? (
-              <p className="red">There was an error, try again</p>
-            ) : (
-              this.renderUsersList()
-            )}
-          </ul>
-
-          {/* {this.renderLogoutLink()} */}
-        </div>
-        {/* <Admin /> */}
-      </section>
-    );
-  }
+	render() {
+		const { error } = this.context;
+		return (
+			<section>
+				<Header />
+				<h2>Admin</h2>
+				<div>
+					<p>Logged in as {this.context.user.name}</p>
+					<Button id="logout" type="onClick" onClick={this.handleLogoutClick}>
+						Log Out
+					</Button>
+				</div>
+				<div>
+					<ul>
+						{error ? (
+							<p className="red">There was an error, try again</p>
+						) : (
+							this.renderUsersList()
+						)}
+					</ul>
+				</div>
+			</section>
+		);
+	}
 }
 
 export default AdminRoute;

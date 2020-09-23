@@ -4,7 +4,6 @@ import { Input, Label } from "../Form/Form";
 import AuthApiService from "../../services/auth-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
-import "../App/App.css";
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -29,7 +28,7 @@ class LoginForm extends Component {
     })
       .then((res) => {
         email.value = "";
-        password.value = "";
+        password.value = "";        
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
       })

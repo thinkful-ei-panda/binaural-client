@@ -22,9 +22,10 @@
 .timer-container{
   display:flex;
   flex-direction: row;
-  justify-content: center;  
+  justify-content: center;
+  align-items: center; 
 }
 
 .button-icon{
-  width: 20px;
+  width: 30px;
 }
