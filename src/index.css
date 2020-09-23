@@ -854,10 +854,10 @@ ul {
 
 @keyframes animStar {
 	from {
-		transform: translateX(0px);
+		transform: translateY(0px);
 	}
 	to {
-		transform: translateX(-2000px);
+		transform: translateY(-2000px);
 	}
 }
 
