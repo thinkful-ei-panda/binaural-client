@@ -74,7 +74,7 @@ class Learn extends Component {
         {TokenService.hasAuthToken() ? (
           <div className="button-container-2">
             <Link to="/player">
-              <button type="button">Play</button>
+              <button type="button">Tune In</button>
             </Link>
           </div>
         ) : (
