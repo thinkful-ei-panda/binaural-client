@@ -5,7 +5,6 @@ import UserApiService from "../../services/user-api-service";
 import TokenService from "../../services/token-service";
 import Button from "../Button/Button";
 import UserContext from "../../contexts/UserContext";
-import "../App/App.css";
 
 class RegistrationForm extends Component {
   static contextType = UserContext;

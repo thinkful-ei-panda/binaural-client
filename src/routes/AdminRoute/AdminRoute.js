@@ -3,6 +3,7 @@ import UserContext from '../../contexts/UserContext';
 import Button from '../../components/Button/Button';
 import UserApiService from '../../services/user-api-service';
 import UserInfo from '../../components/Admin/UserInfo';
+import Header from '../../components/Header/Header';
 
 class AdminRoute extends Component {
 	static defaultProps = {
@@ -47,6 +48,8 @@ class AdminRoute extends Component {
 		const { error } = this.context;
 		return (
 			<section>
+				<Header />
+				<h2>Admin</h2>
 				<div>
 					<p>Logged in as {this.context.user.name}</p>
 					<Button id="logout" type="onClick" onClick={this.handleLogoutClick}>
@@ -54,7 +57,6 @@ class AdminRoute extends Component {
 					</Button>
 				</div>
 				<div>
-					<h2>Admin</h2>
 					<ul>
 						{error ? (
 							<p className="red">There was an error, try again</p>

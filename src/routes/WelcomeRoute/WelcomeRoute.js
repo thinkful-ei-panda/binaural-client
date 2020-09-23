@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../components/App/App.css";
 import Welcome from "../../components/Welcome/Welcome";
 import Header from "../../components/Header/Header";
 import UserContext from "../../contexts/UserContext";
