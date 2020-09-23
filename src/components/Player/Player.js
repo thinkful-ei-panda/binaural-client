@@ -81,9 +81,9 @@ class Player extends Component {
 			panNodes[1].pan.value = 1;
 		} else {
 			panNodes = [ctx.createPanner(), ctx.createPanner()];
-			panNodes[0].panningMode1 = 'equalpower';
+			panNodes[0].panningModel = 'equalpower';
 			panNodes[0].setPosition(-1, 0, 1 - Math.abs(-1));
-			panNodes[1].panningMode1 = 'equalpower';
+			panNodes[1].panningModel = 'equalpower';
 			panNodes[1].setPosition(1, 0, 1 - Math.abs(1));
 		}
 
@@ -118,7 +118,7 @@ class Player extends Component {
 				() => this.handleUpdateTimer(),
 				1000
 			);
-			setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
+			this.soundTimeout = setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
 		}
 	};
 
