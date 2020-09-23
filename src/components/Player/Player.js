@@ -8,6 +8,8 @@ import "./Player.css";
 import UserApiService from "../../services/user-api-service";
 import TokenService from "../../services/token-service";
 
+let ctx = new (window.AudioContext || window.webkitAudioContext)();
+
 class Player extends Component {
   static contextType = UserContext;
   static defaultProps = {};
@@ -26,14 +28,13 @@ class Player extends Component {
     user: null,
   };
 
-
-  async componentDidMount(){    
-    const {id} = await TokenService.parseAuthToken()
-    const user = await UserApiService.getUser(id)
-    if(user.user_prefs.length > 0) {
-      this.setState({activeChip:user.user_prefs,user:user})
+  async componentDidMount() {
+    const { id } = await TokenService.parseAuthToken();
+    const user = await UserApiService.getUser(id);
+    if (user.user_prefs.length > 0) {
+      this.setState({ activeChip: user.user_prefs, user: user });
     } else {
-      this.setState({user:user})
+      this.setState({ user: user });
     }
   }
 
@@ -62,57 +63,107 @@ class Player extends Component {
   handlePlayTone = async (e) => {
     e.preventDefault();
 
-     await UserApiService.updateUserPassword(this.state.user.id, {
+    await UserApiService.updateUserPassword(this.state.user.id, {
       user_prefs: this.state.activeChip,
     });
 
-    let ctx = new (window.AudioContext || window.webkitAudioContext)();
+    // let ctx = new (window.AudioContext || window.webkitAudioContext)();
 
     let b = this.state.beat;
     let f = this.state.fundamental;
 
     // Pan
-    let panNodes
+    let panNodes;
 
-    console.log(panNodes)
-
-    if(ctx.createStereoPanner){
+    if (ctx.createStereoPanner) {
+      console.log("CHROME");
       panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
       panNodes[0].pan.value = -1;
       panNodes[1].pan.value = 1;
-    } else {
-      panNodes = [ctx.createPanner(), ctx.createPanner()];
-      panNodes[0].panningMode1 = 'equalpower';
-      panNodes[0].setPosition(-1, 0, 1 - Math.abs(-1));
-      panNodes[1].panningMode1 = 'equalpower';
-      panNodes[1].setPosition(1, 0, 1 - Math.abs(1));
-    }    
-    
-    panNodes[0].connect(ctx.destination);
-    panNodes[1].connect(ctx.destination);
+      // Oscillators
+      let oscillators = [];
+      let o;
+      for (let i = 0; i < 2; i++) {
+        let pan = i % 2;
+        o = ctx.createOscillator();
+        console.log(o);
+        o.type = "sine";
+        if (pan !== 0) {
+          o.frequency.value = f + b;
+        } else {
+          o.frequency.value = f + 0;
+        }
 
-    // Oscillators
-    let oscillators = [];
-    let o;
-    for (let i = 0; i < 2; i++) {
-      let pan = i % 2;
-      o = ctx.createOscillator();
-      console.log(o);
-      o.type = "sine";
-      if (pan !== 0) {
-        o.frequency.value = f + b;
-      } else {
-        o.frequency.value = f + 0;
+        o.connect(panNodes[pan]);
+        oscillators.push(o);
       }
- 
-      o.connect(panNodes[pan]);
-      oscillators.push(o);
+      panNodes[0].connect(ctx.destination);
+      panNodes[1].connect(ctx.destination);
+      console.log(panNodes);
+      this.setState({ oscillators: oscillators, soundPlaying: true }, () => {
+        this.state.oscillators[0].start();
+        this.state.oscillators[1].start();
+      });
+    } else {
+      console.log("SAFARI");
+      panNodes = [ctx.createPanner(), ctx.createPanner()];
+      panNodes[0].panningModel = "equalpower";
+      panNodes[0].setPosition(0, 0, 0);
+      panNodes[1].panningModel = "equalpower";
+      panNodes[1].setPosition(0, 0, 0);
+      console.log(panNodes[1]);
+      console.log(panNodes[0]);
+      // Oscillators
+      let oscillators = [];
+      let o;
+      for (let i = 0; i < 2; i++) {
+        let pan = i % 2;
+        o = ctx.createOscillator();
+        console.log(o);
+        o.type = "sine";
+        if (pan !== 0) {
+          o.frequency.value = f + b;
+        } else {
+          o.frequency.value = f + 0;
+        }
+
+        o.connect(panNodes[pan]);
+        oscillators.push(o);
+      }
+      panNodes[0].connect(ctx.destination);
+      panNodes[1].connect(ctx.destination);
+      console.log(panNodes);
+      this.setState({ oscillators: oscillators, soundPlaying: true }, () => {
+        this.state.oscillators[0].start();
+        this.state.oscillators[1].start();
+      });
     }
 
-    this.setState({ oscillators: oscillators, soundPlaying: true }, () => {
-      this.state.oscillators[0].start();
-      this.state.oscillators[1].start();
-    });
+    // // Oscillators
+    // let oscillators = [];
+    // let o;
+    // for (let i = 0; i < 2; i++) {
+    //   let pan = i % 2;
+    //   o = ctx.createOscillator();
+    //   console.log(o);
+    //   o.type = "sine";
+    //   if (pan !== 0) {
+    //     o.frequency.value = f + b;
+    //   } else {
+    //     o.frequency.value = f + 0;
+    //   }
+
+    //   o.connect(panNodes[pan]);
+    //   oscillators.push(o);
+    // }
+    // panNodes[0].connect(ctx.destination);
+    // panNodes[1].connect(ctx.destination);
+    // console.log(panNodes);
+
+    // this.setState({ oscillators: oscillators, soundPlaying: true }, () => {
+    //   this.state.oscillators[0].start();
+    //   this.state.oscillators[1].start();
+    // });
 
     if (this.state.timer) {
       this.soundTimerInterval = setInterval(
