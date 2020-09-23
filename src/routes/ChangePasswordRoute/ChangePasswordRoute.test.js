@@ -2,15 +2,15 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Player from "./Player";
+import ChangePasswordRoute from "./ChangePasswordRoute";
 
 
 configure({adapter: new Adapter()});
-describe('<Player />', () => {
+describe('<ChangePasswordRoute />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
-        <Player />
+        <ChangePasswordRoute />
       </BrowserRouter>,
     );
   });
