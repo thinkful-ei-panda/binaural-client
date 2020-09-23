@@ -72,9 +72,22 @@ class Player extends Component {
     let f = this.state.fundamental;
 
     // Pan
-    let panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
-    panNodes[0].pan.value = -1;
-    panNodes[1].pan.value = 1;
+    let panNodes
+
+    console.log(panNodes)
+
+    if(ctx.createStereoPanner){
+      panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
+      panNodes[0].pan.value = -1;
+      panNodes[1].pan.value = 1;
+    } else {
+      panNodes = [ctx.createPanner(), ctx.createPanner()];
+      panNodes[0].panningMode1 = 'equalpower';
+      panNodes[0].setPosition(-1, 0, 1 - Math.abs(-1));
+      panNodes[1].panningMode1 = 'equalpower';
+      panNodes[1].setPosition(1, 0, 1 - Math.abs(1));
+    }    
+    
     panNodes[0].connect(ctx.destination);
     panNodes[1].connect(ctx.destination);
 
