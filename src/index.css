@@ -869,31 +869,7 @@ ul {
 	}
 }
 
-/* alert */
-.alert {
-	max-width: 180px;
-}
-
-/* media queries */
-@media screen and (max-width: 600px) {
-	.container {
-		max-width: 90%;
-  }
-  
-  .item {
-    min-width:240px;
-    max-width: 100%;
-  }
-
-}
-
-@media screen and (min-width: 1400px) {
-	.container-learn {
-		height:100vh;
-	}
-
-}
-
+/* binaural beat player controls */
 .player{
   position: absolute;
   bottom: 0;
@@ -943,4 +919,29 @@ ul {
 
 .button-icon{
   width: 30px;
+}
+
+/* alert */
+.alert {
+	max-width: 180px;
+}
+
+/* media queries */
+@media screen and (max-width: 600px) {
+	.container {
+		max-width: 90%;
+  }
+  
+  .item {
+    min-width:240px;
+    max-width: 100%;
+  }
+
+}
+
+@media screen and (min-width: 1400px) {
+	.container-learn {
+		height:100vh;
+	}
+
 }
