@@ -186,7 +186,7 @@ button:focus {
 .button-container-2 {
   display: flex;
   flex-direction: column;
-  margin-top:15px;
+  margin-top:45px;
 }
 
 /* forms */
