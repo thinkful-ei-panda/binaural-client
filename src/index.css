@@ -904,6 +904,7 @@ ul {
   background-color: #01061290;
   padding:15px;
   align-items: center;
+  border-top:1px solid #e0feff;
 }
 
 .chip-container{
