@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header/Header";
 import UserContext from "../../contexts/UserContext";
 import Player from "../../components/Player/Player";
 
@@ -34,14 +35,17 @@ class PlayerRoute extends Component {
   render() {
     return (
       <section>
+        <Header />
         <p>
           Binaural beats use the power of auditory illusion to help you achieve
           altered states of consciousness
         </p>
-        {this.renderLogoutLink()}
-        <Link to="/change">
-          <h2>Change Password</h2>
-        </Link>
+        <div>
+          <Link to="/change">
+            <p>Change Password</p>
+          </Link>
+          {this.renderLogoutLink()}
+        </div>
         <Player />
       </section>
     );

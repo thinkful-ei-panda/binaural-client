@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import LoginForm from '../../components/LoginForm/LoginForm';
-import UserContext from '../../contexts/UserContext';
-import Header from '../../components/Header/Header';
+import React, { Component } from "react";
+import LoginForm from "../../components/LoginForm/LoginForm";
+import UserContext from "../../contexts/UserContext";
+import Header from "../../components/Header/Header";
 
 class LoginRoute extends Component {
+
 	static defaultProps = {
 		location: {},
 		history: {
