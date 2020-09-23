@@ -9,7 +9,7 @@ class Welcome extends Component {
     return (
       <section className="button-container">
         <Link to="/learn">
-          <Button type="button">Learn More</Button>
+          <Button type="button">Turn On</Button>
         </Link>
         <UserContext.Consumer>
           {userContext =>
