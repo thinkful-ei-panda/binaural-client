@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
 import UserContext from "../../contexts/UserContext";
-import "../App/App.css";
 
 class Learn extends Component {
   static contextType = UserContext;
@@ -75,7 +74,7 @@ class Learn extends Component {
         {TokenService.hasAuthToken() ? (
           <div className="button-container-2">
             <Link to="/player">
-              <button type="button">Play</button>
+              <button type="button">Tune In</button>
             </Link>
           </div>
         ) : (

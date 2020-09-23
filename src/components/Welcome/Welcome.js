@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
-import "../App/App.css";
 import UserContext from '../../contexts/UserContext'
 
 class Welcome extends Component {
@@ -10,7 +9,7 @@ class Welcome extends Component {
     return (
       <section className="button-container">
         <Link to="/learn">
-          <Button type="button">Learn More</Button>
+          <Button type="button">Turn On</Button>
         </Link>
         <UserContext.Consumer>
           {userContext =>

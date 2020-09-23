@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Input, Label } from '../Form/Form';
 import UserApiService from '../../services/user-api-service';
 import Button from '../Button/Button';
-import '../App/App.css';
 import UserContext from '../../contexts/UserContext';
 
 export default class ChangePasswordForm extends Component {
@@ -55,13 +54,13 @@ export default class ChangePasswordForm extends Component {
 						id="change-password-input"
 						name="password"
 						type="password"
-						placeholder="New Password"
+						placeholder="new password"
 						onChange={this.handlePassUpdate}
 						required
 					/>
 				</div>
 
-				<Button type="submit">Save Password</Button>
+				<Button type="submit">Save</Button>
 			</form>
 		);
 	}

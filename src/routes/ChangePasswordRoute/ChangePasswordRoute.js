@@ -39,9 +39,9 @@ class ChangePasswordRoute extends Component {
 
 	render() {
 		return (
-			<section>
+			<section className="container">
 				<Header />
-				<p>
+				<p className="tagline">
 					Binaural beats use the power of auditory illusion to help you achieve
 					altered states of consciousness
 				</p>

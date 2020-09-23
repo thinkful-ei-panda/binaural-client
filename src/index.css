@@ -39,11 +39,8 @@ h1 {
 	color: #e0feff;
 	font-size: 5rem;
 	margin: 0px;
-	font-weight: 100;
-}
-
-h1 a {
-	color: #e0feff;
+  font-weight: 100;
+  /* text-shadow: 2px 2px 6px#e0feffab; */
 }
 
 h2 {
@@ -76,13 +73,38 @@ h3 {
   color: #ea80fc;
 }
 
-/* misc text & links */
-.tagline {
-	margin-top: -15px;
+/* links */
+a:link {
+  color: #e0feff;
+}
+
+a:visited {
+  color: #e0feff;
+}
+
+a:hover {
+  color: #aecbcc;
+}
+
+a:active {
+  color: #aecbcc;
 }
 
 a {
   text-decoration: none;
+}
+
+h1 a {
+	color: #e0feff;
+}
+
+h1 a:hover {
+	color: #e0feff;
+}
+
+/* misc text */
+.tagline {
+	margin-top: -15px;
 }
 
 /* containers */
@@ -135,6 +157,7 @@ a {
   min-width:240px;
   max-width: 240px;
   min-height: 325px;
+  border-bottom: 1px solid #e0feff;
 }
 
 /* buttons */
@@ -148,7 +171,8 @@ button {
 	min-width: 180px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px #e0feff, 0 2px 5px #e0feff;
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
 }
 
 button:focus {
@@ -163,7 +187,7 @@ button:focus {
 .button-container-2 {
   display: flex;
   flex-direction: column;
-  margin-top:15px;
+  margin-top:45px;
 }
 
 /* forms */
@@ -187,12 +211,34 @@ img {
   height: auto;
 }
 
+/* list styles */
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1000px;
+  min-width: 800px;
+  border-bottom: 1px solid #e0feff;
+  align-items: center;
+  margin-bottom:15px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  width:100vw;
+  margin: auto;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-x: scroll;
+}
+
 /* star field */
 #stars {
 	width: 1px;
 	height: 1px;
 	background: transparent;
-	box-shadow: 1581px 1922px #aecbcc, 560px 1674px #aecbcc, 997px 1114px #aecbcc,
+	box-shadow: 1581px 1922px #fff, 560px 1674px #aecbcc, 997px 1114px #aecbcc,
 		1197px 176px #aecbcc, 2450px 607px #aecbcc, 2229px 213px #aecbcc,
 		2361px 2050px #aecbcc, 1777px 1109px #aecbcc, 2441px 483px #aecbcc,
 		567px 2097px #aecbcc, 2188px 366px #aecbcc, 272px 2093px #aecbcc,
@@ -622,8 +668,8 @@ img {
 }
 
 #stars2 {
-	width: 2px;
-	height: 2px;
+	width: 1.75px;
+	height: 1.75px;
 	background: transparent;
 	box-shadow: 1132px 465px #e0feff, 1190px 1572px #e0feff, 1006px 1006px #e0feff,
 		135px 927px #e0feff, 637px 1002px #e0feff, 2346px 650px #e0feff, 1856px 827px #e0feff,
@@ -683,8 +729,8 @@ img {
 	content: ' ';
 	position: absolute;
 	top: 100vh;
-	width: 2px;
-	height: 2px;
+	width: 1.75px;
+	height: 1.75px;
 	background: transparent;
 	box-shadow: 1132px 465px #e0feff, 1190px 1572px #e0feff, 1006px 1006px #e0feff,
 		135px 927px #e0feff, 637px 1002px #e0feff, 2346px 650px #e0feff, 1856px 827px #e0feff,
@@ -740,8 +786,8 @@ img {
 }
 
 #stars3 {
-	width: 3px;
-	height: 3px;
+	width: 2.25px;
+	height: 2.25px;
 	background: transparent;
 	box-shadow: 4px 2163px #fff, 1154px 1781px #fff, 1903px 198px #fff,
 		1044px 1205px #fff, 223px 418px #fff, 99px 1106px #fff, 226px 593px #fff,
@@ -776,8 +822,8 @@ img {
 	content: ' ';
 	position: absolute;
 	top: 100vh;
-	width: 3px;
-	height: 3px;
+	width: 2.25px;
+	height: 2.25px;
 	background: transparent;
 	box-shadow: 4px 2163px #fff, 1154px 1781px #fff, 1903px 198px #fff,
 		1044px 1205px #fff, 223px 418px #fff, 99px 1106px #fff, 226px 593px #fff,
@@ -809,10 +855,10 @@ img {
 
 @keyframes animStar {
 	from {
-		transform: translateY(0px);
+		transform: translateX(0px);
 	}
 	to {
-		transform: translateY(-2000px);
+		transform: translateX(-400px);
 	}
 }
 
@@ -840,20 +886,3 @@ img {
 	}
 
 }
-
-/*******
-
-With a palm full of stars
-I throw them like dice
-repeatedly
-On the table
-repeatedly
-I shake them like dice
-And throw them on the table
-repeatedly
-Until the desired constellation appears
-
-"Desired Constellation" by Bjork
-https://www.youtube.com/watch?v=LsYVR1FO44A
-
-*******/
