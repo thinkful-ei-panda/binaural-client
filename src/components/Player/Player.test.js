@@ -6,7 +6,7 @@ import Player from "./Player";
 
 
 configure({adapter: new Adapter()});
-describe.skip('<Player />', () => {
+describe('<Player />', () => {
   it('renders without crashing', () => {
     mount(
       <BrowserRouter>
@@ -15,4 +15,3 @@ describe.skip('<Player />', () => {
     );
   });
 });
-//TODO Remove .skip from Player test 
