@@ -41,7 +41,7 @@ class PlayerRoute extends Component {
       <section>
         <Header />
         <p className="tagline">
-          Please use headphones for the optimal experience
+          Please use headphones and Google Chrome for the optimal experience
         </p>
         <div>
           {this.renderLogoutLink()}
