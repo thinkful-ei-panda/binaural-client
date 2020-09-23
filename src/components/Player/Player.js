@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-// import { Input, Required, Label } from "../Form/Form";
-// import UserApiService from "../../services/user-api-service";
-// import Button from "../Button/Button";
 import "../App/App.css";
 import Timer from "../Timer/Timer";
 import AudioVisualizer from "../AudioVisualizer/AudioVisualizer";
+import DefaultAV from "../AudioVisualizer/DefaultAV";
 import WaveChips from "../WaveChips/WaveChips";
-//import WaveSplash from "../WaveSplash/WaveSplash";
 import UserContext from "../../contexts/UserContext";
 import "./Player.css";
-import UserApiService from "../../services/user-api-service";
-import TokenService from "../../services/token-service";
+// import UserApiService from "../../services/user-api-service";
+// import TokenService from "../../services/token-service";
 
 class Player extends Component {
   static contextType = UserContext;
@@ -75,9 +72,6 @@ class Player extends Component {
 
     let ctx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // let b = parseInt(e.target.Beat.value); // beat in Hz
-    // let f = parseInt(e.target.Fundamentals.value); // fundamental frequency
-
     let b = this.state.beat;
     let f = this.state.fundamental;
 
@@ -127,8 +121,8 @@ class Player extends Component {
 
   //stops tone when stop is clicked or when timer runs out
   handleStopTone = () => {
-    this.state.oscillators[0].stop();
-    this.state.oscillators[1].stop();
+    this.state.oscillators[0].stop(2);
+    this.state.oscillators[1].stop(2);
     clearInterval(this.soundTimerInterval);
     if (this.state.timer === 0) {
       this.setState({ soundPlaying: false, timer: null });
@@ -157,11 +151,11 @@ class Player extends Component {
     const chips = ["Delta", "Theta", "Alpha", "Beta", "Gamma"];
     return (
       <>
-        <AudioVisualizer
-          beat={this.state.beat}
-          wave={this.state.activeChip}
-          // onError= {<WaveSplash activeChip={this.state.activeChip}}
-        />
+        {this.state.soundPlaying ? (
+          <AudioVisualizer activeChip={this.state.activeChip} />
+        ) : (
+          <DefaultAV />
+        )}
         <footer className="player">
           <div role="alert">{error && <p>{error}</p>}</div>
           <WaveChips

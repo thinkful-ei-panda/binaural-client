@@ -7,87 +7,68 @@ class GammaAV extends React.Component {
     $(function () {
       var waves = new SineWaves({
         el: document.getElementById("waves"),
-
-        speed: 2,
-
+        speed: 1,
         width: function () {
           return $(window).width();
         },
-
         height: function () {
           return $(window).height() / 2;
         },
-
         wavesWidth: "100%",
-
         ease: "SineInOut",
-
         waves: [
           // Left wave
           {
-            timeModifier: 29, // beat - 2
-            lineWidth: 1, // Don't change
-            amplitude: 75, // heightL
-            wavelength: 15, // lengthL
-            segmentLength: 1, // Don't change
-            strokeStyle: "#ffb2ff", // colorL
+            timeModifier: 61,
+            lineWidth: 1,
+            amplitude: 75,
+            wavelength: 15,
+            segmentLength: 1,
+            strokeStyle: "#ffb2ff",
           },
           // Middle wave
           {
-            timeModifier: 31, // BinauralBeat
-            lineWidth: 3, // Don't change
-            amplitude: 150, // heightM
-            wavelength: 15, // lengthM
-            segmentLength: 1, // Don't change
-            strokeStyle: "#E0FEFF", // Don't change
+            timeModifier: 63,
+            lineWidth: 3,
+            amplitude: 150,
+            wavelength: 15,
+            segmentLength: 1,
+            strokeStyle: "#ea80fc",
           },
           // Right wave
           {
-            timeModifier: 33, // BinauralBeat + 2
-            lineWidth: 2, // Don't change
-            amplitude: 100, // heightR
-            wavelength: 15, // lengthR
-            segmentLength: 1, // Don't change
-            strokeStyle: "#AECBCC", // Don't change
+            timeModifier: 65,
+            lineWidth: 2,
+            amplitude: 100,
+            wavelength: 15,
+            segmentLength: 1,
+            strokeStyle: "#b64fc8",
           },
         ],
 
         initialize: function () {},
 
         resizeEvent: function () {
-          //   var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-          //   var gradient1 = this.ctx.createLinearGradient(0, 0, this.width, 0);
-          //   var gradient2 = this.ctx.createLinearGradient(0, 0, this.width, 0);
-          // Left wave
+          // var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
           // gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-          // gradient.addColorStop(0.5, "rgb(140, 158, 255)"); // colorL
+          // gradient.addColorStop(0.5, "rgb(140, 158, 255)");
           // gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
-          // Middle wave (Binaural Beat)
-          //   gradient1.addColorStop(0, "rgba(0, 0, 0, 0)");
-          //   gradient1.addColorStop(0.5, "rgb(234, 128, 252)"); // colorM
-          //   gradient1.addColorStop(1, "rgba(0, 0, 0, 0)");
-          // Right wave (Binaural Beat)
-          //   gradient2.addColorStop(0, "rgba(0, 0, 0, 0)");
-          //   gradient2.addColorStop(0.5, "rgb(182, 79, 200)"); // colorR
-          //   gradient2.addColorStop(1, "rgba(0, 0, 0, 0)");
-          //   var index = -1;
-          //   var length = this.waves.length;
-          //   while (++index < length) {
-          //     this.waves[index].strokeStyle = gradient;
-          //   }
-          //   // Clean Up
-          //   index = void 0;
-          //   length = void 0;
-          //   gradient = void 0;
+          // var index = -1;
+          // var length = this.waves.length;
+          // while (++index < length) {
+          //   this.waves[index].strokeStyle = gradient;
+          // }
+          // Clean Up
+          // index = void 0;
+          // length = void 0;
+          // gradient = void 0;
         },
       });
     });
 
     return (
       <div id="container">
-        <canvas id="waves" height="700" width="1000">
-          {/* {this.handleSineWave} */}
-        </canvas>
+        <canvas id="waves" height="700" width="100%"></canvas>
       </div>
     );
   }
