@@ -37,6 +37,13 @@ class Player extends Component {
     }
   }
 
+  componentWillUnmount(){
+    if(this.soundTimerInterval)    
+      clearInterval(this.soundTimerInterval);
+    if(this.timerTimeout)
+      clearTimeout(this.timerTimeout);
+  }
+
   handleChipChange = async (chip) => {
     switch (chip) {
       case "Delta":
@@ -74,19 +81,20 @@ class Player extends Component {
     // Pan
     let panNodes
 
-    console.log(panNodes)
-
     if(ctx.createStereoPanner){
       panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
       panNodes[0].pan.value = -1;
       panNodes[1].pan.value = 1;
     } else {
+      console.log('HERE')
       panNodes = [ctx.createPanner(), ctx.createPanner()];
-      panNodes[0].panningMode1 = 'equalpower';
+      panNodes[0].panningModel = 'equalpower';
       panNodes[0].setPosition(-1, 0, 1 - Math.abs(-1));
-      panNodes[1].panningMode1 = 'equalpower';
+      panNodes[1].panningModel = 'equalpower';
       panNodes[1].setPosition(1, 0, 1 - Math.abs(1));
-    }    
+    }
+
+    console.log(panNodes)
     
     panNodes[0].connect(ctx.destination);
     panNodes[1].connect(ctx.destination);
@@ -119,7 +127,7 @@ class Player extends Component {
         () => this.handleUpdateTimer(),
         1000
       );
-      setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
+      this.timerTimeout = setTimeout(() => this.handleStopTone(), this.state.timer * 1000);
     }
   };
 
@@ -133,6 +141,7 @@ class Player extends Component {
     this.state.oscillators[0].stop(2);
     this.state.oscillators[1].stop(2);
     clearInterval(this.soundTimerInterval);
+    clearTimeout(this.timerTimeout);
     if (this.state.timer === 0) {
       this.setState({ soundPlaying: false, timer: null });
     } else {
