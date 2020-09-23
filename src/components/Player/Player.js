@@ -8,6 +8,8 @@ import './Player.css';
 import UserApiService from '../../services/user-api-service';
 import TokenService from '../../services/token-service';
 
+
+let ctx = new (window.AudioContext || window.webkitAudioContext)();
 class Player extends Component {
 	static contextType = UserContext;
 	static defaultProps = {};
@@ -65,7 +67,7 @@ class Player extends Component {
 			user_prefs: this.state.activeChip
 		});
 
-		let ctx = new (window.AudioContext || window.webkitAudioContext)();
+		
 
 		let b = this.state.beat;
 		let f = this.state.fundamental;
