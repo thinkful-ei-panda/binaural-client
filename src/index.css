@@ -170,7 +170,8 @@ button {
 	min-width: 180px;
 	cursor: pointer;
 	box-shadow: 0 2px 5px #e0feff, 0 2px 5px #e0feff;
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  outline: none;
 }
 
 button:focus {
