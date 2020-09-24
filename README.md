@@ -42,5 +42,13 @@ server tech
 ### UX/UI Design
 Adobe XD
 
+## Test Credentials
+
+### Username
+test@test.com
+
+### Password
+Testuser1!
+
 ## Credits
 Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
