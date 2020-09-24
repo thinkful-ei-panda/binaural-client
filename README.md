@@ -1,6 +1,6 @@
 # Binaural
 
-![Branding](./screenshots/homepage.PNG "Branding")
+![Branding](./static/img/binaural-branding.png "Branding")
 
 ## Turn On, Tune In, Drop Out
 
