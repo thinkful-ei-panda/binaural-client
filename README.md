@@ -43,7 +43,7 @@ Back-End technology used for this project includes Express, Node, PostgreSQL, ..
 Coding languages used for this project include Javascript, HTML and CSS.
 
 ### UX/UI
-Adobe XD
+UX/UI design for this project was accomplished using Adobe XD.
 
 ## Design Pattern
 
