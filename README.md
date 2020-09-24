@@ -59,7 +59,7 @@ Adobe XD
 
 ## Test Credentials
 
-### Username
+### Email
 test@test.com
 
 ### Password
