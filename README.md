@@ -34,19 +34,29 @@ https://github.com/thinkful-ei-panda/binaural-server
 ## Technology
 
 ### Client
-client tech
+React
+React Router
 
 ### Server
-server tech
+Express
+Node
+...
 
-### UX/UI Design
+### Code
+Javascript
+HTML
+CSS
+
+### UX/UI
 Adobe XD
 
 ## Test Credentials
 
-### Username: test@test.com
+### Username
+test@test.com
 
-### Password: Testuser1!
+### Password
+Testuser1!
 
 ## Credits
 Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
