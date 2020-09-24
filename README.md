@@ -213,4 +213,4 @@ Logs in to an existing account
         ```
 
 ## Credits
-Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
+Seyi Ariyo, Renata Dickinson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
