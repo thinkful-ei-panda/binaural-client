@@ -34,25 +34,13 @@ https://github.com/thinkful-ei-panda/binaural-server
 ## Technology
 
 ### Client
-React
-
-React Router
-
-...
+React, React Router, ...
 
 ### Server
-Express
-
-Node
-
-...
+Express, Node, ...
 
 ### Code
-Javascript
-
-HTML
-
-CSS
+Javascript, HTML and CSS
 
 ### UX/UI
 Adobe XD
