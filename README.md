@@ -1,20 +1,18 @@
 # Binaural
 
+![Branding](./screenshots/homepage.PNG "Branding")
+
 ## Turn On, Tune In, Drop Out
 
 Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness.
 
 ## Screenshots
 
-### Homepage
-
-Landing page
+### Landing Screen
 
 ![Home Page](./screenshots/homepage.PNG "Home Page")
 
-### Learn Page
-
-Learn more about the app
+### App Info
 
 ![Learn Page](./screenshots/learnpage.PNG "Learn Page")
 
@@ -40,6 +38,9 @@ client tech
 
 ### Server
 server tech
+
+### UX/UI Design
+Adobe XD
 
 ## Credits
 Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
