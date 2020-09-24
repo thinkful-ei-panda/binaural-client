@@ -4,12 +4,12 @@ import AudioVisualizer from '../AudioVisualizer/AudioVisualizer';
 import DefaultAV from '../AudioVisualizer/DefaultAV';
 import WaveChips from '../WaveChips/WaveChips';
 import UserContext from '../../contexts/UserContext';
-import './Player.css';
 import UserApiService from '../../services/user-api-service';
 import TokenService from '../../services/token-service';
 
 
 let ctx = new (window.AudioContext || window.webkitAudioContext)();
+
 class Player extends Component {
 	static contextType = UserContext;
 	static defaultProps = {};
@@ -78,7 +78,7 @@ class Player extends Component {
 		console.log(panNodes);
 
 		if (ctx.createStereoPanner) {
-			panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
+			panNodes = [ctx.createPanner(), ctx.createPanner()];
 			panNodes[0].pan.value = -1;
 			panNodes[1].pan.value = 1;
 		} else {

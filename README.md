@@ -1,33 +1,61 @@
 # Binaural
 
-Live App:
+## Turn On, Tune In, Drop Out
 
-Server Repo: https://github.com/thinkful-ei-panda/binaural-server
+Binaural generates binaural beats and audio visualizations to help users achieve altered states of consciousness.
 
-## Summary
-
-A summary
+![Branding](./public/static/img/binaural-branding.png "Branding")
 
 ## Screenshots
 
-### Homepage
+### Landing Screen
 
-Landing page
+![Landing Screen](./public/static/img/binaural-screenshot-home.png "Landing Screen")
 
-![Home Page](./screenshots/homepage.PNG "Home Page")
+### Binaural Beat Info
 
-### Learn Page
+![Binaural Beat Info](./public/static/img/binaural-screenshot-turn-on.png "Binaural Beat Info")
 
-Learn more about the app
+### Binaural Beat Visualizer
 
-![Learn Page](./screenshots/learnpage.PNG "Learn Page")
+![Binaural Beat Visualizer](./public/static/img/binaural-screenshot-beat-player.png "Binaural Beat Visualizer")
 
-### Binaural Beat Player & Audio Visualizer
+## Links
 
-![Player](./screenshots/player.PNG "Player")
+### Live App
+https://binaural-client.vercel.app/
 
-![Visualiser](./screenshots/visualiser.PNG "Visualiser")
+### Client Repo
+https://github.com/thinkful-ei-panda/binaural-client
+
+### Server Repo
+https://github.com/thinkful-ei-panda/binaural-server
 
 ## Technology
 
-Made with the React framework. Routing done with React Router.
+### Front-End
+Front-End technology used for this project includes React, React Router, ...
+
+### Back-End
+Back-End technology used for this project includes Express, Node, PostgreSQL, ...
+
+### Languages
+Coding languages used for this project include Javascript, HTML and CSS.
+
+### UX/UI
+UX/UI designed in Adobe XD.
+
+## Design Pattern
+
+Binaural invokes a design pattern inspired by 1990s rave culture and electronic music. The typography is inspired by Icelandic musician <a href="https://www.youtube.com/watch?v=LsYVR1FO44A&list=RDLsYVR1FO44A&start_radio=1">Bjork</a>.
+
+## Test Credentials
+
+### Email
+test@test.com
+
+### Password
+Testuser1!
+
+## Credits
+Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
