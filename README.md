@@ -10,15 +10,15 @@ Binaural generates binaural beats and audio visualizations to help you achieve a
 
 ### Landing Screen
 
-![Home Page](./screenshots/homepage.PNG "Home Page")
+![Landing Screen](./public/static/img/binaural-screenshot-home.png "Landing Screen")
 
-### App Info
+### Binaural Beat Info
 
-![Learn Page](./screenshots/learnpage.PNG "Learn Page")
+![Binaural Beat Info](./public/static/img/binaural-screenshot-turn-on.png "Binaural Beat Info")
 
-### Binaural Beat Player & Audio Visualizer
+### Binaural Beat Visualizer
 
-![Player](./screenshots/player.PNG "Player")
+![Binaural Beat Visualizer](./public/static/img/binaural-screenshot-beat-player.png "Binaural Beat Visualizer")
 
 ## Links
 
