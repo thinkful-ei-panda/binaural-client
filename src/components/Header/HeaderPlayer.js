@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../contexts/UserContext";
 
-class Header extends Component {
+class HeaderPlayer extends Component {
   static contextType = UserContext;
 
   render() {
@@ -16,4 +16,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default HeaderPlayer;
