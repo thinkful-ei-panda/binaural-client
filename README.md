@@ -22,8 +22,11 @@ Binaural generates binaural beats and audio visualizations to help users achieve
 
 ## Links
 
-### Live App
+### Vercel
 https://binaural-client.vercel.app/
+
+### Heroku
+https://intense-mesa-95345.herokuapp.com
 
 ### Client Repo
 https://github.com/thinkful-ei-panda/binaural-client
