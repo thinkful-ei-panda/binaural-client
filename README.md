@@ -44,11 +44,9 @@ Adobe XD
 
 ## Test Credentials
 
-### Username
-test@test.com
+### Username: test@test.com
 
-### Password
-Testuser1!
+### Password: Testuser1!
 
 ## Credits
 Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
