@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import HeaderPlayer from "../../components/Header/HeaderPlayer";
 import UserContext from "../../contexts/UserContext";
 import Player from "../../components/Player/Player";
 
@@ -39,7 +39,7 @@ class PlayerRoute extends Component {
   render() {
     return (
       <section>
-        <Header />
+        <HeaderPlayer />
         <p className="tagline">
           Please use headphones and Google Chrome for the optimal experience
         </p>
