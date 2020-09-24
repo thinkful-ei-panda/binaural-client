@@ -4,7 +4,7 @@
 
 ## Turn On, Tune In, Drop Out
 
-Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness.
+Binaural generates binaural beats and audio visualizations to help you achieve altered states of consciousness.
 
 ## Screenshots
 
