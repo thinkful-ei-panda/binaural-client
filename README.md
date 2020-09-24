@@ -1,10 +1,10 @@
 # Binaural
 
-![Branding](./public/static/img/binaural-branding.png "Branding")
-
 ## Turn On, Tune In, Drop Out
 
 Binaural generates binaural beats and audio visualizations to help you achieve altered states of consciousness.
+
+![Branding](./public/static/img/binaural-branding.png "Branding")
 
 ## Screenshots
 
