@@ -1,12 +1,8 @@
 # Binaural
 
-Live App:
+## Turn On, Tune In, Drop Out
 
-Server Repo: https://github.com/thinkful-ei-panda/binaural-server
-
-## Summary
-
-A summary
+Binaural beats use the power of auditory illusion to help you achieve altered states of consciousness.
 
 ## Screenshots
 
@@ -26,8 +22,24 @@ Learn more about the app
 
 ![Player](./screenshots/player.PNG "Player")
 
-![Visualiser](./screenshots/visualiser.PNG "Visualiser")
+## Links
+
+### Live App
+https://binaural-client.vercel.app/
+
+### Client Repo
+https://github.com/thinkful-ei-panda/binaural-client
+
+### Server Repo
+https://github.com/thinkful-ei-panda/binaural-server
 
 ## Technology
 
-Made with the React framework. Routing done with React Router.
+### Client
+client tech
+
+### Server
+server tech
+
+## Credits
+Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve, Karsten Taylor
