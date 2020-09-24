@@ -35,16 +35,23 @@ https://github.com/thinkful-ei-panda/binaural-server
 
 ### Client
 React
+
 React Router
+
+...
 
 ### Server
 Express
+
 Node
+
 ...
 
 ### Code
 Javascript
+
 HTML
+
 CSS
 
 ### UX/UI
