@@ -42,4 +42,4 @@ client tech
 server tech
 
 ## Credits
-Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve, Karsten Taylor
+Seyi Ariyo, Renata Dickenson, Rebecca Hudson, Wesley Rou, Josh Struve and Karsten Taylor
