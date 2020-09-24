@@ -1,7 +1,6 @@
  /* eslint-disable */
 import React from "react";
 import SineWaves from "sine-waves";
-import $ from "jquery";
 
 class DefaultAV extends React.Component {
   constructor(props) {
