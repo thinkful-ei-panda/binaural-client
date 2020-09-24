@@ -47,7 +47,7 @@ UX/UI designed in Adobe XD.
 
 ## Design Pattern
 
-Binaural invokes a retro-futuristic design pattern inspired by 1990s rave culture and electronic music. Typography is inspired by Icelandic musician [Bjork](https://www.youtube.com/watch?v=LsYVR1FO44A&list=RDLsYVR1FO44A&start_radio=1)
+Binaural invokes a retro-futuristic design pattern inspired by 1990s rave culture and electronic music. Typography is inspired by Icelandic musician [Bjork](https://www.youtube.com/watch?v=LsYVR1FO44A&list=RDLsYVR1FO44A&start_radio=1).
 
 ## Test Credentials
 
