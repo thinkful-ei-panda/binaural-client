@@ -36,14 +36,14 @@ https://github.com/thinkful-ei-panda/binaural-server
 ### Front-End
 Front-End technology used for this project includes React, React Router, ...
 
-### Backend
+### Back-End
 Back-End technology used for this project includes Express, Node, PostgreSQL, ...
 
 ### Languages
 Coding languages used for this project include Javascript, HTML and CSS.
 
 ### UX/UI
-UX/UI design for this project uses Adobe XD.
+UX/UI designed in Adobe XD.
 
 ## Design Pattern
 
