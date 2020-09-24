@@ -12,6 +12,10 @@ Binaural generates binaural beats and audio visualizations to help users achieve
 
 ![Landing Screen](./public/static/img/binaural-screenshot-home.png "Landing Screen")
 
+### Sign Up
+
+![Sign Up](./public/static/img/binaural-screenshot-sub.png "Sign Up")
+
 ### Binaural Beat Info
 
 ![Binaural Beat Info](./public/static/img/binaural-screenshot-turn-on.png "Binaural Beat Info")
