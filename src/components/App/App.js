@@ -15,16 +15,16 @@ import UserContext from '../../contexts/UserContext';
 import '../../index.css';
 
 export default class App extends Component {
-  state = {
-    hasError: false,
-  };
+	state = {
+		hasError: false,
+	};
 
-  static contextType = UserContext;
+	static contextType = UserContext;
 
-  static getDerivedStateFromError(error) {
-    console.error(error);
-    return { hasError: true };
-  }
+	static getDerivedStateFromError(error) {
+		console.error(error);
+		return { hasError: true };
+	}
 
 	render() {
 		const { hasError } = this.state;
