@@ -1,20 +1,29 @@
  /* eslint-disable */
 import React from "react";
 import SineWaves from "sine-waves";
-import $ from "jquery";
 
 class DefaultAV extends React.Component {
-  render() {
-    $(function () {
-      var waves = new SineWaves({
-        el: document.getElementById("waves"),
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
+  }
+  componentDidMount() {
+    this.createSineWaves();
+  }
 
+  componentWillUnmount() {
+    this.alphaWave = null
+  }
+  
+  createSineWaves(){
+    this.alphaWave = new SineWaves({
+      el: this.canvasRef.current,
         speed: 2,
         width: function () {
-          return $(window).width();
+          return window.screen.width;
         },
         height: function () {
-          return $(window).height() / 2;
+          return window.screen.height / 2;
         },
         wavesWidth: "100%",
         ease: "SineInOut",
@@ -66,11 +75,13 @@ class DefaultAV extends React.Component {
           //   gradient = void 0;
         },
       });
-    });
+    };
+
+    render() {
 
     return (
       <div id="container">
-        <canvas id="waves" height="700" width="100%"></canvas>
+        <canvas  ref={this.canvasRef} id="waves" height="700" width="100%"></canvas>
       </div>
     );
   }
