@@ -7,3 +7,7 @@
   position: absolute;
   z-index: 20;
 }
+
+canvas {
+  width:100vw;
+}

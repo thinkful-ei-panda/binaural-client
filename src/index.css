@@ -869,6 +869,11 @@ ul {
 	}
 }
 
+canvas {
+	max-width:100vw;
+	max-height:700px;
+}
+
 /* binaural beat player controls */
 .player{
   position: absolute;

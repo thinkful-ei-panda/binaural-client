@@ -56,24 +56,6 @@ class ThetaAV extends React.Component {
               strokeStyle: "#4d82cb",
             },
           ],
-          
-          initialize: function () {},
-          
-          resizeEvent: function () {
-            // var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
-            // gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
-            // gradient.addColorStop(0.5, "rgb(140, 158, 255)");
-            // gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
-            // var index = -1;
-            // var length = this.waves.length;
-            // while (++index < length) {
-              //   this.waves[index].strokeStyle = gradient;
-              // }
-              // Clean Up
-              // index = void 0;
-              // length = void 0;
-              // gradient = void 0;
-            },
           });
         };
         

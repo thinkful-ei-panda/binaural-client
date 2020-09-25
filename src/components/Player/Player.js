@@ -78,7 +78,7 @@ class Player extends Component {
 		console.log(panNodes);
 
 		if (ctx.createStereoPanner) {
-			panNodes = [ctx.createPanner(), ctx.createPanner()];
+			panNodes = [ctx.createStereoPanner(), ctx.createStereoPanner()];
 			panNodes[0].pan.value = -1;
 			panNodes[1].pan.value = 1;
 		} else {
